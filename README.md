@@ -26,7 +26,7 @@
 
 Kontynuacja prostego emulatora układu Intel 4004..
 
-Symulacja do asemblacji i badań architektury komputera , służącego jako urządzenie wbudowane - kalkulator - z kilkoma instrukcjami (46 instrukcji) .
+Do symulacji kalkulatora lub badań architektury komputera i urządzeń wbudowanych  z kilkoma instrukcjami (46 instrukcji) .
 
 ## Intel 4004
 
