@@ -1,0 +1,934 @@
+
+<!-- saved from url=(0048)file:///D:/dziatfa/emulators/MCS-4/emu/iset.html -->
+<html><!--<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">--><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<title>Intel 4004 Instructions Set</title>
+
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="description" content="A JavaScript emulator assembler disassembler for the Intel 4004 CPU">
+<meta name="keywords" content="Intel 4004, emulator, assembler, disassembler, i4004, JavaScript, olbits.eu">
+
+<!--<link rel="stylesheet" href="./4004_files/style.css" type="text/css">--><link rel="stylesheet" href="varia/style.css" type="text/css">
+
+
+<style type="text/css" 
+
+a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-syndicated="true"],#MAIN.ShowTopic >  
+
+</style></head>
+
+<body bgcolor="#A7A7A7" text="#ffffff" link="#D4DCE5" vlink="#D4DCE5" alink="#BB0000">
+<br>
+<center>
+
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr valign="top">
+	<td align="left">Detale Repertuaru Instrukcji MCS-4</td>
+	<!--<td align="right"><form name="home"><input type="button" value="home" class="isButton" onclick="self.location.href=(&#39;../index_en.html&#39;)">--><TD align="right"><FORM NAME="home"><INPUT TYPE="button" VALUE="dom" TITLE=home CLASS="isButton" onClick="self.location.href=('index_pl.html')"></form></td>
+	</tr>
+	<tr class="tekst"><td align="left" colspan="2">Zestaw Instrukcji Intel 4004</td></tr>
+</tbody></table>
+
+<table border="1" cellpadding="0" cellspacing="0" width="500" bgcolor="#959595" class="tekst">
+	<tbody><tr valign="top"><td align="right" title="rubryka dodane" ><span style="color:silver">hex</span></td><td>INSTRUKCJA</td><td align="center">MNEMONIC.</td><td colspan="2">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+		<tbody><tr align="center"><td colspan="2">ODPOWIEDNIK BINARNY</td></tr><tr align="center"><td width="50%">1zy bajt</td><td>2gi bajt</td></tr></tbody></table>
+	</td><td>MODYFIKATORY</td></tr>
+	
+	<tr align="center"><td style=color:silver> 00 </td>
+	<td align="left"><span title='No Operation'>
+	Bez Operacji</span></td><td><span title='00'>NOP</span></td><td width="15%">00000000</td><td width="15%">-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> 10 </td>
+	<td align="left"><span title='Jump Conditional'>
+	Skok Warunkowy</span></td><td><span title='10 00 ?'>JCN</span></td><td>0001CCCC</td><td>AAAAAAAA</td><td align="left">warunek , adres</td></tr>
+	
+	<tr align="center"><td style=color:silver> 20 </td>
+	<td align="left"><span title='Fetch Immediate'>
+	Pobierz Natychmiast</span></td><td><span title='2 00'>FIM</span></td><td>0010RRR0</td><td>DDDDDDDD</td><td align="left">rejestr pary, dana</td></tr>
+	
+	<tr align="center"><td style=color:silver> 21 </td>
+	<td align="left"><span title='Send Register Control'>
+	Wy¶lij Kontrole Rejestru</span></td><td><span title='21 0'>SRC</span></td><td>0010RRR1</td><td>-</td><td align="left">rejestr pary</td></tr>
+	
+	<tr align="center"><td style=color:silver> 30 </td>
+	<td align="left"><span title='Fetch Indirect'>
+	Pobierz Po¶rednio</span></td><td><span title='3 0'>FIN</span></td><td>0011RRR0</td><td>-</td><td align="left">rejestr pary</td></tr>
+	
+	<tr align="center"><td style=color:silver> 31 </td>
+	<td align="left"><span title='Jump Indirect'>
+	Skok Po¶redni</span></td><td><span title='31 0'>JIN</span></td><td>0011RRR1</td><td>-</td><td align="left">rejestr pary</td></tr>
+	
+	<tr align="center"><td style=color:silver> 40 </td>
+	<td align="left"><span title='Jump Uncoditional'>
+	Jump Niekwestionowany</span></td><td><span title='4 0'>JUN</span></td><td>0100AAAA</td><td>AAAAAAAA</td><td align="left">adres</td></tr>
+	
+	<tr align="center"><td style=color:silver> 50 </td>
+	<td align="left"><span title='Jump to Subroutine'>
+	PrzejdĽ do Podprogramu</span></td><td><span title='5 0'>JMS</span></td><td>0101AAAA</td><td>AAAAAAAA</td><td align="left">adres</td></tr>
+	
+	<tr align="center"><td style=color:silver> 60 </td>
+	<td align="left"><span title='Increment'>
+	Przyrost</span></td><td><span title='6 0'>INC</span></td><td>0110RRRR</td><td>-</td><td align="left">rejestr</td></tr>
+	
+	<tr align="center"><td style=color:silver> 70 </td>
+	<td align="left"><span title='Increment and Skip'>
+	Przyrost i Pomijanie</span></td><td><span title='7 00'>ISZ</span></td><td>0111RRRR</td><td>AAAAAAAA</td><td align="left">rejestr, adres</td></tr>
+	
+	<tr align="center"><td style=color:silver> 80 </td>
+	<td align="left"><span title='Add'>
+	Dodaj</span></td><td><span title='8 0'>ADD</span></span></td><td>1000RRRR</td><td>-</td><td align="left">rejestr</td></tr>
+	
+	<tr align="center"><td style=color:silver> 90 </td>
+	<td align="left"><span title='Subtract'>
+	Odejmować</span></td><td><span title='9 0'>SUB</span></td><td>1001RRRR</td><td>-</td><td align="left">rejestr</td></tr>
+	
+	<tr align="center"><td style=color:silver> A0 </td>
+	<td align="left"><span title='Load'>
+	Załaduj</span></td><td><span title='A 0'>LD</span></td><td>1010RRRR</td><td>-</td><td align="left">rejestr</td></tr>
+	
+	<tr align="center"><td style=color:silver> B0 </td>
+	<td align="left"><span title='Exchange'>
+	Wymieniać </span></td><td><span title='B 0'>XCH</span></td><td>1011RRRR</td><td>-</td><td align="left">rejestr</td></tr>
+	
+	<tr align="center"><td style=color:silver> C0 </td>
+	<td align="left"><span title='Branch Back and Load'>
+	OdgałęĽ z Powrotem i Ładuj</span></td><td><span title='C 0'>BBL</span></td><td>1100DDDD</td><td>-</td><td align="left">dana</td></tr>
+	
+	<tr align="center"><td style=color:silver> D0 </td>
+	<td align="left"><span title='Load Immediate'>
+	Wczytaj Natychmiast</span></td><td><span title='D 0'>LDM</span></td><td>1101DDDD</td><td>-</td><td align="left">dana</td></tr>
+	
+	<tr align="center"><td style=color:silver> E0 </td>
+	<td align="left"><span title='Write Main Memory'>
+	Napisz do Pamięci Głównej</span></td><td><span title='E0'>WRM</span></td><td>11100000</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E1 </td>
+	<td align="left"><span title='Write RAM Port'>
+	Napisz Port RAM</span></td><td><span title='E1'>WMP</span></td><td>11100001</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E2 </td>
+	<td align="left"><span title='Write ROM Port'>
+	Napisz Port ROM</span></td><td><span title='E2'>WRR</span></td><td>11100010</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E4 </td>
+	<td align="left"><span title='Write Status Char 0'>
+	Zapisz Stan Znaku 0</span></td><td><span title='E4'>WR0</span></td><td>11100100</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E5 </td>
+	<td align="left"><span title='Write Status Char 1'>
+	Zapisz Stan Znaku 1</span></td><td><span title='E5'>WR1</span></td><td>11100101</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E6 </td>
+	<td align="left"><span title='Write Status Char 2'>
+	Zapisz Stan Znaku 2</span></td><td><span title='E6'>WR2</span></td><td>11100110</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E7 </td>
+	<td align="left"><span title='Write Status Char 3'>
+	Zapisz Stan Znaku 3</span></td><td><span title='E7'>WR3</span></td><td>11100111</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E8 </td>
+	<td align="left"><span title='Subtract Main Memory'>
+	Odejmij Pamięć Główn±</span></td><td><span title='E8'>SBM</span></td><td>11101000</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> E9 </td>
+	<td align="left"><span title='Read Main Memory'>
+	Przeczytaj Pamięć Główn±</span></td><td><span title='E9'>RDM</span></td><td>11101001</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> EA</td>
+	<td align="left"><span title='Read ROM Port'>
+	Przeczytaj Port ROM</span></td><td><span title='EA'>RDR</span></td><td>11101010</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> EB </td>
+	<td align="left"><span title='Add Main Memory'>
+	Dodaj Pamięć Główn±</span></td><td><span title='EB'>ADM</span></td><td>11101011</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> EC </td>
+	<td align="left"><span title='Read Status Char 0'>
+	Przeczytaj Stan Znaku 0</span></td><td><span title='EC'>RD0</span></td><td>11101100</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> ED </td>
+	<td align="left"><span title='Read Status Char 1'>
+	Przeczytaj Stan Znaku 1</span></td><td><span title='ED'>RD1</span></td><td>11101101</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> EE </td>
+	<td align="left"><span title='Read Status Char 2'>
+	Przeczytaj Stan Znaku 2</span></td><td><span title='EE'>RD2</span></td><td>11101110</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> EF </td>
+	<td align="left"><span title='Read Status Char 3'>
+	Przeczytaj Stan Znaku 3</span></td><td><span title='EF'>RD3</span></td><td>11101111</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F0 </td>
+	<td align="left"><span title='Clear Both'>
+	Czy¶cić Oba</span></td><td><span title='F0'>CLB</span></td><td><span title=''>11110000</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F1 </td>
+	<td align="left"><span title='Clear Carry'>
+	Oczy¶cić Przeniesienie</span></td><td><span title='F1'>CLC</span></td><td>11110001</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F2 </td>
+	<td align="left"><span title='Increment Accumulator'>
+	Akumulator Przyrostowy</span></td><td><span title='F2'>IAC</span></td><td>11110010</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F3 </td>
+	<td align="left"><span title='Complement Carry'>
+	Dopełnienie Przeniesienia</span></td><td><span title='F3'>CMC</span></td><td>11110011</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F4 </td>
+	<td align="left"><span title='Complement'>
+	Kompletować</span></td><td><span title='F4'>CMA</span></td><td>11110100</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F5 </td>
+	<td align="left"><span title='Rotate Left'>
+	Obrót w Lewo</span></td><td><span title='F5'>RAL</span></td><td>11110101</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F6 </td>
+	<td align="left"><span title='Rotate Right'>
+	Obróć w Prawo</span></td><td><span title='F6'>RAR</td><td>11110110</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F7 </td>
+	<td align="left"><span title='Transfer Carry and Clear'>
+	Transfer Przeniesienia i Czy¶ć</span></td><td><span title='F7'>TCC</span></td><td>11110111</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F8 </td>
+	<td align="left"><span title='Decrement Accumulator'>
+	Akumulator Spadku</span></td><td><span title='F8'>DAC</span></td><td>11111000</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> F9 </td>
+	<td align="left"><span title='Transfer Carry Subtract'>
+	Tr. Przeniesienia Odejmowania</span></td><td><span title='F9'>TCS</span></td><td>11111001</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> FA </td>
+	<td align="left"><span title='Set Carry'>
+	Ustaw Przeniesienie</span></span></td><td><span title='FA'>STC</span></td><td>11111010</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> FB </td>
+	<td align="left"><span title='Decimal Adjust Accumulator'>
+	Akumulator Regulacji Dziesiętnej</span></td><td><span title='FB'>DAA</span></td><td>11111011</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> FC </td>
+	<td align="left"><span title='Keybord Process'>
+	Proces Klawiatury</span></td><td><span title='FC'>KBP</span></td><td>11111100</td><td>-</td><td align="left">nic</td></tr>
+	
+	<tr align="center"><td style=color:silver> FD </td>
+	<td align="left"><span title='Designate Command Line'>
+	Wyznacz Linie Komendy</span></td><td><span title='FD'>DCL</span></td><td>11111101</td><td>-</td><td align="left">nic</td></tr>
+	
+</tbody></table>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td>Instruction Format</td></tr>
+	<tr align="left"><td class="tekst"><br>Zestaw mikrokomputerów MCS-4 ma dwa typy instrukcji: <br>a) Instrukcja zawieraj±ca 1 słowo z kodem 8-bitowym i czasem wykonania 10,8 ůsek. <br> b) Instrukcja zawieraj±ca 2 słowa z kodem 16-bitowym i czas wykonania 21,6 ůsec. <br> <br> Ze wzgledu na multipleksowane czasowo działanie systemu, instrukcja 8-bitowa jest pobierana po 4 bity na raz w dwóch kolejnych okresach zegara. <br> <br> Formaty instrukcji przedstawiono w tabelach I i II. <br> <br> Tabela I</td></tr>
+	<tr align="center"><td><table border="0" cellpadding="0" cellspacing="0" width="350" class="tekst">
+		<tbody><tr align="center"><td>INSTRUKCJA JEDNEGO SLOWA</td></tr>
+
+		<tr><td>&nbsp;</td></tr>
+
+		<tr align="center"><td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+		<tbody><tr align="center"><td>D3</td><td>D2</td><td>D1</td><td>D0</td><td>D3</td><td>D2</td><td>D1</td><td>D0</td></tr>
+		</tbody></table></td></tr>
+
+		<tr align="center"><td><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+		<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td></tr>
+		</tbody></table></td></tr>
+
+		<tr align="center"><td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+		<tbody><tr align="center"><td>OPR</td><td>OPA</td></tr>
+		</tbody></table></td></tr>
+
+		<tr><td>&nbsp;</td></tr>
+
+		<tr align="center"><td><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+		<tbody><tr align="center"><td width="50%">KOD OPERACJI</td><td>MODYFIKATOR</td></tr>
+		</tbody></table></td></tr>
+
+		<tr><td>&nbsp;</td></tr>
+
+		<tr align="center"><td><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+		<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">ADRES REJESTRU INDEKSU<br>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>R</td><td>R</td><td>R</td><td>R</td></tr></tbody></table></td></tr>
+		</tbody></table></td></tr>
+
+		<tr align="center"><td><br>LUB<br></td></tr>
+
+		<tr align="center"><td><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+		<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">ADRES REJESTRU PAR INDEKSU<br>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>R</td><td>R</td><td>R</td><td>X</td></tr></tbody></table></td></tr>
+		</tbody></table></td></tr>
+
+		<tr align="center"><td><br>LUB<br></td></tr>
+
+		<tr align="center"><td><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+		<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">DANA<br>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>D</td><td>D</td><td>D</td><td>D</td></tr></tbody></table></td></tr>
+		</tbody></table></td></tr>
+	</tbody></table></td></tr>
+</tbody></table>
+<br><br>
+<table border="0" cellpadding="0" cellspacing="0" width="700" class="tekst">
+	<tbody><tr align="left"><td colspan="3" class="tekst">Tabela II</td></tr>
+	<tr align="center"><td colspan="3">INSTRUKCJE DWA SŁOWA</td></tr>
+
+	<tr><td colspan="3">&nbsp;</td></tr>
+
+	<tr align="center"><td width="48%">1zy CYKL INSTRUKCJI</td>
+	<td></td><td width="48%">2gi CYKL INSTRUKCJI</td></tr>
+
+	<tr><td colspan="3">&nbsp;</td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+	<tbody><tr align="center"><td>D3</td><td>D2</td><td>D1</td><td>D0</td><td>D3</td><td>D2</td><td>D1</td><td>D0</td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+	<tbody><tr align="center"><td>D3</td><td>D2</td><td>D1</td><td>D0</td><td>D3</td><td>D2</td><td>D1</td><td>D0</td></tr></tbody></table>
+	</td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td></tr></tbody></table>
+	</td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+	<tbody><tr align="center"><td>OPR</td><td>OPA</td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+	<tbody><tr align="center"><td>OPR</td><td>OPA</td></tr></tbody></table>
+	</td></tr>
+
+	<tr><td colspan="3">&nbsp;</td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td width="50%">KOD OPERACJI</td><td>MODYFIKATOR</td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td width="50%">KOD OPERACJI</td><td>MODYFIKATOR</td></tr></tbody></table>
+	</td></tr>
+
+	<tr><td colspan="3">&nbsp;</td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">GÓRNY ADRES<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A3</td><td>A3</td><td>A3</td><td>A3</td></tr></tbody></table></td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td width="50%">ADRES ¦RODKOWY<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A2</td><td>A2</td><td>A2</td><td>A2</td></tr></tbody></table></td>
+	<td width="50%">NIŻSZY ADRES<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A1</td><td>A1</td><td>A1</td><td>A1</td></tr></tbody></table></td></tr></tbody></table>
+	</td></tr>
+
+	<tr align="center"><td colspan="3"><br>OR<br></td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">WARUNEK<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>C1</td><td>C2</td><td>C3</td><td>C4</td></tr></tbody></table></td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td width="50%">ADRES ¦RODKOWY<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A2</td><td>A2</td><td>A2</td><td>A2</td></tr></tbody></table></td>
+	<td width="50%">NIŻSZY ADRES<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A1</td><td>A1</td><td>A1</td><td>A1</td></tr></tbody></table></td></tr></tbody></table>
+	</td></tr>
+
+	<tr align="center"><td colspan="3"><br>OR<br></td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">ADRES REJESTRU INDEKSU<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>R</td><td>R</td><td>R</td><td>R</td></tr></tbody></table></td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td width="50%">ADRES ¦RODKOWY<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A2</td><td>A2</td><td>A2</td><td>A2</td></tr></tbody></table></td>
+	<td width="50%">NIŻSZY ADRES<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>A1</td><td>A1</td><td>A1</td><td>A1</td></tr></tbody></table></td></tr></tbody></table>
+	</td></tr>
+
+	<tr align="center"><td colspan="3"><br>OR<br></td></tr>
+
+	<tr align="center">
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td>x</td><td>x</td><td>x</td><td>x</td><td colspan="4" width="50%">ADRES REJESTRU PAR INDEKSU<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>R</td><td>R</td><td>R</td><td>X</td></tr></tbody></table></td></tr></tbody></table>
+	</td><td>&nbsp;</td>
+	<td width="48%"><table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="#959595" class="tekst">
+	<tbody><tr align="center"><td width="50%">GÓRNE DANE<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>D2</td><td>D2</td><td>D2</td><td>D2</td></tr></tbody></table></td>
+	<td width="50%">NIŻSZE DANE<br>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst"><tbody><tr align="center"><td>D1</td><td>D1</td><td>D1</td><td>D1</td></tr></tbody></table></td></tr></tbody></table>
+	</td></tr>
+
+</tbody></table>
+<br><br><br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td colspan="2">Symbole i Skróty</td></tr>
+	<tr align="left" class="tekst"><td colspan="2"><br>Następuj±ce symbole i skróty będa używane w kilku następnych rozdziałach:<br><br></td></tr>
+	<tr align="left" class="tekst"><td width="10%">(&nbsp;)</td><td>zawarto¶ć</td></tr>
+	<tr align="left" class="tekst"><td width="10%">--&gt;</td><td>jest przenoszone do</td></tr>
+	<tr align="left" class="tekst"><td width="10%">ACC</td><td>Akumulator (4-bitowy)</td></tr>
+	<tr align="left" class="tekst"><td width="10%">CY</td><td>Carry/link  Flip-Flop</td></tr>
+	<tr align="left" class="tekst"><td width="10%">ACBR</td><td>Rejestr bufora akumulatora (4-bit)</td></tr>
+	<tr align="left" class="tekst"><td width="10%">RRRR</td><td>Adres rejestru indeksowego</td></tr>
+	<tr align="left" class="tekst"><td width="10%">RRR</td><td>Adres pary rejestrów indeksowych</td></tr>
+	<tr align="left" class="tekst"><td width="10%">PL</td><td>Pole licznika programu niskiego przekazu (4-bit)</td></tr>
+	<tr align="left" class="tekst"><td width="10%">PM</td><td>Pole licznika programu ¶rodkowego przekazu (4-bit)</td></tr>
+	<tr align="left" class="tekst"><td width="10%">PH</td><td>Pole licznika programu wysokiego przekazu (4-bit)</td></tr>
+	<tr align="left" class="tekst"><td width="10%">ai</td><td>Przekaz i zawarto¶ci akumulatora</td></tr>
+	<tr align="left" class="tekst"><td width="10%">CMi</td><td>Przekaz i zawarto¶ć rejestru komendy</td></tr>
+	<tr align="left" class="tekst"><td width="10%">M</td><td>Lokalizacja głównego znaku w pamięci RAM</td></tr>
+	<tr align="left" class="tekst"><td width="10%">MSi</td><td>Znak stanu pamięci RAM i</td></tr>
+	<tr align="left" class="tekst"><td width="10%">DB (T)</td><td>Zawarto¶ć magistrali danych w czasie T</td></tr>
+	<tr align="left" class="tekst"><td width="10%">Stack</td><td>3 rejestry w rejestrze adresowym innym niż licznik programu</td></tr>
+</tbody></table>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td>Format Opisu Każdej Instrukcji</td></tr>
+	<tr align="left"><td class="tekst"><br>Każda instrukcja będzie opisana w następuj±cy sposób: <br> (1) Symbol i znaczenie mnemoniczne <br> (2) Kod OPR i OPA <br> (3) Symboliczna reprezentacja instrukcji <br> (4) Opis instrukcji ( w razie potrzeby) <br> (5) Przykład i/lub wyjatki (w razie potrzeby)<br></td></tr>
+</tbody></table>
+<br><br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td>Instrukcja Maszynowa zawieraj&#261;ca Jedno S&#322;owo</td></tr>
+	<tr align="left"><td><br>
+
+    <a id=nop ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>NOP (<span title='Bez operacji'>No Operation</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>0000 0000</td></tr>
+		<tr><td>Symbolic:</td><td>Not applicable</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Nie wykonuje żadnej operacji</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=ldm ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>LDM (<span title='Zaladowanie danej do akumulatora'>Load data to Accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1101 DDDD</td></tr>
+		<tr><td>Symbolic:</td><td>DDDD --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4 bity danych DDDD przechowywane w polu OPA słowa inicjujacego s± ładowane do akumulatora. Poprzednia zawarto¶ć akumulatora zostanie utracona. Nie ma to wpływu na bit przenoszenia/link.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=ld ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>LD (<span title='Zaladowanie rejestru indeksoewego do akumulatora'>Load index register to Accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1010 RRRR</td></tr>
+		<tr><td>Symbolic:</td><td>(RRRR) --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4-bitowa zawarto¶ć wyznaczonego rejestru indeksowego (RRRR) jest ładowana do akumulatora. Wcze¶niejsza zawartosc akumulatora zostanie utracona. 4-bitowa zawarto¶ć rejestru indeksu i bit przenoszenia/link pozostaja niezmienione.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=xch ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>XCH (<span title='Zamiana rejestru indeksu i akumulatora '>Exchange index register and accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1011 DDDD</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; ACBR, (RRRR) --&gt; ACC, (ACBR) --&gt; RRRR</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4-bitowa zawarto¶ć wyznaczonego rejestru indeksowego jest ładowana do akumulatora. Do zaprojektowanego rejestru ładowana jest wcze¶niejsza zawarto¶ć akumulatora. Nie ma to wpływu na bit przenoszenia/link.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=add ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>ADD (<span title='Dodanie rejestru indeksu do akumulatora z przeniesieniem'>Add index register to accumulator with carry</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1000 RRRR</td></tr>
+		<tr><td>Symbolic:</td><td>(RRRR) + (ACC) + (CY) --&gt; ACC, CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4-bitowa zawarto¶ć wyznaczonego rejestru indeksowego jest dodawana do zawarto¶ci akumulatora z przeniesieniem. Wynik jest przechowywany w akumulatorze. Przeniesienie/link jest ustawiane na 1, je¶li wygenerowano sumę większ± niż 15 w celu wskazania wykonania; w przeciwnym razie przeniesienie/link jest ustawione na 0. 4-bitowa zawarto¶ć rejestru indeksu pozostaje niezmieniona.</td></tr>
+		<tr valign="top"><td>Przykład:</td><td>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+		<tbody><tr align="left"><td>&nbsp;</td><td>Augend</td><td colspan="3">&nbsp;</td><td>Addend</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>(ACC)</td><td>&nbsp;</td><td>(CY)</td><td>&nbsp;</td><td>(RRRR)</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</td><td>&nbsp;</td><td>|</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>a3 a2 a1 a0</td><td>&nbsp;</td><td>|</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c0</td><td>&lt;---------</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td align="right">+)&nbsp;</td><td>&nbsp;r3 r2 r1 r0</td><td>&lt;---------</td><td>-------</td><td>------</td><td>&nbsp;</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>--------------</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">CARRY ---&gt;&nbsp;c4&nbsp;</td><td>s3 s2 s1 s0</td><td>&lt;-- SUM</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">|&nbsp;&nbsp;</td><td>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">|&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;-----------</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">|&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">(CY)</td><td>&nbsp;&nbsp;&nbsp;&nbsp;(ACC)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</tbody></table>
+		</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=sub ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>SUB (<span title='Odejmij rejestr indeksu z akumulatora z pozyczka'>Subtract index register from accumulator with borrow</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1001 RRRR</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) + ~(RRRR) + (CY) --&gt; ACC, CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Czterobitowa zawarto¶ć wyznaczonego rejestru indeksowego jest uzupełniana (uzupełnianie jedynkowe) i dodawana do zawarto¶ci akumulatora pozyczka, a wynik jest przechowywany w akumulatorze. W przypadku wygenerowania pożyczki bit przeniesienia jest ustawiany na 0; w przeciwnym razie jest ustawiony na 1. 4-bitowa zawarto¶ć rejestru indeksu pozostaje niezmieniona.</td></tr>
+		<tr valign="top"><td>Przykład:</td><td>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+		<tbody><tr align="left"><td>&nbsp;</td><td>Minuend</td><td colspan="3">&nbsp;</td><td>Subtrahend</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>(ACC)</td><td>&nbsp;</td><td>(CY)</td><td>&nbsp;</td><td>(RRRR)</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</td><td>&nbsp;</td><td>|</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>a3 a2 a1 a0</td><td>&nbsp;</td><td>|</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c0</td><td>&lt;------------</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>|</td></tr>
+		<tr align="left"><td align="right">+)&nbsp;</td><td>&nbsp;r3 r2 r1 r0</td><td>&lt;------------</td><td>-------</td><td>------</td><td>&nbsp;</td></tr>
+		<tr align="left"><td>&nbsp;</td><td>--------------</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">Borrow ---&gt;&nbsp;c4&nbsp;</td><td>s3 s2 s1 s0</td><td>&lt;-- Result</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">|&nbsp;&nbsp;</td><td>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">|&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;-----------</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">|&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr align="left"><td align="right">(CY)</td><td>&nbsp;&nbsp;&nbsp;&nbsp;(ACC)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</tbody></table>
+		</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=inc ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>INC (<span title='Zwiekszenie rejestru indeksu'>Increment index register</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>0110 RRRR</td></tr>
+		<tr><td>Symbolic:</td><td>(RRRR) +1 --&gt; RRRR</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4-bitowa zawarto¶ć wyznaczonego rejestru indeksu jest zwiększana o 1. Rejestr indeksu jest ustawiany na zero w przypadku przepełnienia. Nie ma to wpływu na przeniesienie/link.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=bbl ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>BBL (<span title='Rozgalezienie zwrotne & zaladowanie danej do akumulatora'>Branch back and load data to the accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>0110 RRRR</td></tr>
+		<tr><td>Symbolic:</td><td>(Stack) --&gt; PL, PM, PH; DDDD --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Licznik programu (stos adresów) jest przesuwany o jeden poziom w dól. Sterowanie programem przechodzi do następnej instrukcji po ostatnim skoku do instrukcji podprogramu (JMS). 4 bity danych DDDD przechowywane w czę¶ci OPA instrukcji s± ładowane do akumulatora. <br> <br> BBL służy do powrotu z podprogramu do programu głównego.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=jin ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>JIN (<span title='Skok posredni'>Jump indirect</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>0011 RRR1</td></tr>
+		<tr><td>Symbolic:</td><td>(RRRO) --&gt; PM<br>(RRR1) --&gt; PL; PH unchanged</td></tr>
+		<tr valign="top"><td>Opis:</td><td>8-bitowa zawarto¶ć wyznaczonej pary rejestrów indeksowych jest ładowana na najniższe pozycje 8 licznika programu. Sterowanie programem jest przekazywane do instrukcji pod tym adresem na tej samej stronie (tej samej pamięci ROM), na której znajduje się instrukcja JIN. 8-bitowa zawarto¶ć rejestru indeksu pozostaje nienaruszona.</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>Kiedy JIN znajduje się pod adresem (PH) 1111 1111, sterowanie programem jest przesyłane do następnej strony w kolejno¶ci, a nie do tej samej strony, na której znajduje się instrukcja JIN. Oznacza to, że następny adres to (PH + 1) (RRRO) (RRR1), a nie (PH) (RRRO) (RRR1)</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=src ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>SRC (<span title='Wyslij kontrole rejestru'>Send register control</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>0010 RRR1</td></tr>
+		<tr><td>Symbolic:</td><td>(RRRO) --&gt; DB	(X2)<br>(RRR1) --&gt; DB (X3)</td></tr>
+		<tr valign="top"><td>Opis:</td><td>8-bitowa zawarto¶ć wyznaczonej pary rejestrów indeksowych jest wysyłana do rejestru adresu RAM w X2 i X3. PóĽniejsza operacja odczytu, zapisu lub operacji we/wy pamięci RAM będzie wykorzystywać ten adres. W szczególno¶ci pierwsze 2 bity adresu oznaczaj± układ pamięci RAM; drugie 2 bity oznaczaj± 1 z 4 rejestrów w chipie; ostatnie 4 bity oznaczaj± 1 z 16 4-bitowych znaków pamięci głównej w rejestrze. Polecenie to jest równiez używane do wyznaczania pamięci ROM do póĽniejszej operacji portu we/wy ROM. Pierwsze 4 bity okre¶laj± numer chipa ROM, który ma zostać wybrany. Adres w pamięci ROM lub RAM nie jest usuwany do czasu wykonania następnej instrukcji SRC. 8-bitowa zawarto¶ć rejestru indeksu pozostaje nienaruszona.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=fin ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>FIN (<span title='Pobierz posrednio od ROM'>Fetch indirect from ROM</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>0011 RRRO</td></tr>
+		<tr><td>Symbolic:</td><td>(PH) (0000) (0001) --&gt; ROM address<br>(OPR) --&gt; RRRO<br>(OPA) --&gt; RRR1</td></tr>
+		<tr valign="top"><td>Opis:</td><td>8-bitowa zawarto¶ć pary rejestrów indeksów 0 (0000) (0001) jest wysylana jako adres na tej samej stronie, na której znajduje sie instrukcja FIN. 8-bitowe slowo w tej lokalizacji jest ladowane do wyznaczonej pary rejestrów indeksowych. Nie ma to wplywu na licznik programu; po wykonaniu FIN, zaadresowana zostanie nastepna w kolejnosci instrukcja. Zawartosc pary rejestrów indeksów 0 pozostaje niezmieniona, chyba ze wyznaczono rejestr indeksów 0.</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>a) Chociaż FIN jest instrukcj± skladaj±c± się z jednego słowa, jej wykonanie wymaga dwóch cykli pamięci (21,6 psec). <br> <br> b) Gdy FIN znajduje się pod adresem (PH) 1111 1111 dane zostan± pobrane z następnej strony ( ROM) w kolejno¶ci, a nie z tej samej strony (ROM), na której znajduje się instrukcja FIN. Oznacza to, że następny adres to (PH + 1) (0000) (0001), a nie (PH) (0000) (0001).</td></tr>
+	</tbody></table>
+	</td></tr>
+</tbody></table>
+<br><br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td>Instrukcja Maszynowa składaj±ca się z Dwóch Słów</td></tr>
+	<tr align="left"><td><br>
+
+    <a id=jun ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="27%">Mnemonic:</td><td>JUN (<span title='Skok bezwarunkowy'>Jump unconditional</span>)</td></tr>
+		<tr><td>1st word OPR OPA:</td><td>0100 A3 A3 A3 A3</td></tr>
+		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;Al Al Al Al</td></tr>
+		<tr valign="top"><td>Symbolic:</td><td>Al Al Al Al --&gt; PL,<br>A2 A2 A2 A2 --&gt; PM,<br>A3 A3 A3 A3 --&gt; PH</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Sterowanie programem jest bezwarunkowo przekazywane do lokalizatora instrukcji pod adresem A3 A3 A3 A3, A2 A2 A2 A2, Al Al Al Al.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=jms ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="27%">Mnemonic:</td><td>JMS (<span title='Przejdz do Podprogramu'>Jump to Subroutine</span>)</td></tr>
+		<tr><td>1st word OPR OPA:</td><td>0101 A3 A3 A3 A3</td></tr>
+		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;A1 A1 A1 A1</td></tr>
+		<tr valign="top"><td>Symbolic:</td><td>Al Al Al Al --&gt; PL,<br>A2 A2 A2 A2 --&gt; PM,<br>A3 A3 A3 A3 --&gt; PH</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Adres następnej instrukcji w kolejno¶ci po JMS (adres zwrotny) jest zapisywany na stosie push down. Sterowanie programem przekazywane jest do instrukcji umieszczonej pod adresem 12-bitowym (A3A3A3A3A2A2A2A2A1A1A1A1). Wykonanie instrukcji powrotu (BBL) spowoduje wyci±gnięcie zapisanego adresu ze stosu, dlatego kontrola programu jest przenoszona do następnej instrukcji sekwencyjnej po ostatnim JMS. <br> <br> Stos przesuwany ma 4 rejestry . Jeden z nich jest używany jako licznik programu, dlatego zagnieżdżanie JMS może mieć maksymalnie 3 poziomy.</td></tr>
+		<tr valign="top"><td>PRZYKŁAD:</td><td>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
+		<tbody><tr align="center"><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td></tr>
+		<tr align="center"><td>No&nbsp;JMS&nbsp;-&gt;<br>received</td><td>
+		<table border="1" cellpadding="0" cellspacing="0" class="tekst">
+		<tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>PC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></tbody></table>
+		</td><td>-&gt;&nbsp;JMS#1&nbsp;-&gt;<br>received</td><td>
+		<table border="1" cellpadding="0" cellspacing="0" class="tekst">
+		<tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>PC</td></tr><tr><td>Rtn&nbsp;addr#1</td></tr></tbody></table>
+		</td><td>-&gt;</td></tr>
+		<tr align="center"><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td></tr>
+		<tr align="center"><td>JMS#2&nbsp;-&gt;<br>received</td><td>
+		<table border="1" cellpadding="0" cellspacing="0" class="tekst">
+		<tbody><tr><td>&nbsp;</td></tr><tr><td>PC</td></tr><tr><td>Rtn&nbsp;addr#2</td></tr><tr><td>Rtn&nbsp;addr#1</td></tr></tbody></table>
+		</td><td>-&gt;&nbsp;JMS#3&nbsp;-&gt;<br>received</td><td>
+		<table border="1" cellpadding="0" cellspacing="0" class="tekst">
+		<tbody><tr><td>PC</td></tr><tr><td>Rtn&nbsp;addr#3</td></tr><tr><td>Rtn&nbsp;addr#2</td></tr><tr><td>Rtn&nbsp;addr#1</td></tr></tbody></table>
+		</td><td>-&gt;</td></tr>
+		<tr align="center"><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td></tr>
+		<tr align="center"><td>JMS#4&nbsp;-&gt;<br>received</td><td>
+		<table border="1" cellpadding="0" cellspacing="0" class="tekst">
+		<tbody><tr><td>Rtn&nbsp;addr#4</td></tr><tr><td>Rtn&nbsp;addr#3</td></tr><tr><td>Rtn&nbsp;addr#2</td></tr><tr><td>PC</td></tr></tbody></table>
+		</td><td>-&gt;&nbsp;BBL&nbsp;-&gt;<br>received</td><td>
+		<table border="1" cellpadding="0" cellspacing="0" class="tekst">
+		<tbody><tr><td>PC</td></tr><tr><td>Rtn&nbsp;addr#3</td></tr><tr><td>Rtn&nbsp;addr#2</td></tr><tr><td>&nbsp;</td></tr></tbody></table>
+		</td><td>&nbsp;&nbsp;</td></tr>
+		<tr align="left"><td colspan="5">Najgłębszy adres zwrotny został utracony.</td></tr>
+		</tbody></table>
+		</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=jcn ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="27%">Mnemonic:</td><td>JCN (<span title='Skok warunkowy'>Jump conditional</span>)</td></tr>
+		<tr><td>1st word OPR OPA:</td><td>0001	C1C2C3C4</td></tr>
+		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;A1 A1 A1 A1</td></tr>
+		<tr valign="top"><td>Symbolic:</td><td>If C1C2C3C4 is true, A2A2A2A2 --&gt; PM<br>A1A1A1A1 --&gt; PL, PH unchanged<br>if C1C2C3C4 is false,<br>(PH) --&gt; PH, (PM) --&gt; PM, (PL + 2) --&gt; PL</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Je¶li wyznaczony kod warunku jest prawdziwy, sterowanie programem jest przekazywane do instrukcji znajduj±cej się pod 8-bitowym adresem A2A2A2A2, A1A1A1A1 na tej samej stronie (ROM), na której znajduje się JCN. <br> Je¶li warunek nie jest prawdziwy, następna instrukcja w kolejno¶ci po wykonaniu JCN. <br> Bity warunku s± przypisywane w następuj±cy sposób: <br> C1 = 0 Nie odwracaj warunku skoku <br> C1 = 1 Odwróć warunek skoku <br> C2 = 1 Skocz, je¶li zawarto¶ć akumulatora wynosi zero < br> C3 = 1 Skocz, je¶li zawarto¶ć przenoszenia/link wynosi 1 <br> C4 = 1 Skocz, je¶li sygnał testowy (styk 10 na 4004) ma warto¶ć zero.</td></tr>
+		<tr valign="top"><td>Przykład:</td><td>OPR&nbsp;&nbsp;&nbsp;&nbsp;OPA<br>------&nbsp;&nbsp;&nbsp;&nbsp;------<br>0001&nbsp;&nbsp;&nbsp;&nbsp;0110&nbsp;&nbsp;Skocz, je¶li akumulator ma warto¶ć zero lub przeniesienie = 1 <br> <br> <br> Kilka warunków można przetestować jednoczesnie. <br> <br> Równanie logiczne opisuj±ce warunek skoku jest podane poniżej:<br><br>JUMP = ~C1 . ((ACC = 0) . C2 + (CY = 1) . C3 +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~TEST . C4) + C1 . ~((ACC = 0) . C2 +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(CY = 1) . C3 + ~TEST . C4)</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>Je¶li JCN znajduje się na słowach 254 i 255 na stronie ROM, gdy JCN jest wykonywany i warunek jest prawdziwy, sterowanie programem jest przesyłane do 8-bitowego adresu na następnej stronie, na której znajduje się JCN.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=isz ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="27%">Mnemonic:</td><td>ISZ (<span title='Przyrost rejestru indeksu przyrostu pomin sie, jesli zero'>Increment index register skip if zero</span>)</td></tr>
+		<tr><td>1st word OPR OPA:</td><td>0111	RRRR</td></tr>
+		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;A1 A1 A1 A1</td></tr>
+		<tr valign="top"><td>Symbolic:</td><td>(RRRR) + 1 --&gt; RRRR, if result = 0<br>(PH) --&gt; PH, (PM) --&gt; PM, (PL + 2) --&gt; PL:<br>if result &lt;&gt; 0&nbsp;&nbsp;(PH) --&gt; PH,<br>A2A2A2A2 --&gt; PM, A1A1A1A1 --&gt; PL</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć wyznaczonego rejestru indeksowego jest zwiększana o 1. Akumulator i przeniesienie/link pozostaj± niezmienione. Je¶li wynikiem jest zero, wykonywana jest następna instrukcja po ISZ. Jeżeli wynik jest różny od 0, sterowanie programem jest przekazywane do instrukcji znajduj±cej się pod 8-bitowym adresem A2A2A2A2, A1A1A1A1 na tej samej stronie (ROM), na której znajduje się instrukcja ISZ.</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>Je¶li ISZ znajduje się na słowach 254 i 255 strony ROM, gdy ISZ jest wykonywany i wynik nie jest zerowy, sterowanie programem jest przesyłane do 8-bitowego adresu znajduj±cego się na następnej stronie w kolejno¶ci, a nie na tej samej stronie, na której znajduje się ISZ jest zlokalizowany.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=fim ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="27%">Mnemonic:</td><td>FIM (<span title='Pobierany natychmiast z ROM'>Fetched immediate from ROM</span>)</td></tr>
+		<tr><td>1st word OPR OPA:</td><td>0010	RRR0</td></tr>
+		<tr><td>2nd word OPR OPA:</td><td>D2 D2 D2 D2&nbsp;&nbsp;D1 D1 D1 D1</td></tr>
+		<tr valign="top"><td>Symbolic:</td><td>D2D2D2D2 --&gt; RRR0, D1D1D1D1 --&gt; RRR1</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Drugie słowo reprezentuje 8-bitowe dane, które s± ładowane do wyznaczonej pary rejestrów indeksowych.</td></tr>
+	</tbody></table>
+	</td></tr>
+</tbody></table>
+<br><br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td>Instrukcje Wej&#347;cia/Wyj&#347;cia i pami&#281;ci RAM</td></tr>
+	<tr align="left"><td class="tekst">(Pamięci RAM i ROM obsługiwane w instrukcjach I/O i RAM zostały <br> wcze¶niej wybrane przez ostatni± wykonan± instrukcje SRC.)</td></tr>
+	<tr align="left"><td><br>
+
+    <a id=rdm ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RDM (<span title='Odczytanie znaku pamieci RAM.'>Read RAM character</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1001</td></tr>
+		<tr><td>Symbolic:</td><td>(M) --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć wybranej wcze¶niej pamięci głównej RAM jest przenoszona na akumulator. Nie ma to wpływu na przeniesienie/link. Nie ma to wpływu na 4-bitowe dane w pamięci.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=rd0 ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RD0 (<span title='Odczytanie znaku stanu pamieci RAM 0'>Read RAM status character 0</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1100</td></tr>
+		<tr><td>Symbolic:</td><td>(MS0) --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4 bity znaku statusu 0 dla wcze¶niej wybranego rejestru RAM s± przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link i znak statusu.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=rd1 ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RD1 (<span title='Odczytanie znaku stanu pamieci RAM 1'>Read RAM status character 1</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1101</td></tr>
+		<tr><td>Symbolic:</td><td>(MS1) --&gt; ACC</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=rd2 ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RD2 (<span title='Odczytaj znak stanu pamieci RAM 2'>Read RAM status character 2</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1110</td></tr>
+		<tr><td>Symbolic:</td><td>(MS2) --&gt; ACC</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=rd3 ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RD3 (<span title='Odczytanie znaku stanu pamieci RAM 3'>Read RAM status character 3</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1111</td></tr>
+		<tr><td>Symbolic:</td><td>(MS0) --&gt; ACC</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=rdr ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RDR (<span title='Przeczytaj port ROM.'>Read ROM port</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1010</td></tr>
+		<tr><td>Symbolic:</td><td>(ROM input lines) --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Dane obecne na liniach wej¶ciowych wybranego wcze¶niej układu ROM s± przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link. Je¶li opcja I/O ma zarówno wej¶cia, jak i wyj¶cia w tych samych 4 liniach I/O, użytkownik może wybrać opcje "0" lub "1" przeniesiona do akumulatora dla tych pinów I/O zakodowanych jako wyj¶cia, gdy Wykonywana jest instrukcja RDR.</td></tr>
+		<tr valign="top"><td>PRZYKŁAD:</td><td>Bior±c pod uwagę 4001 z kodowaniem I/O z 2 wej¶ciami i 2 wyj¶ciami, kiedy RDR jest wykonywany, transfer jest taki, jak pokazano poniżej:<br><br>I3 O2 O1 I0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ACC)<br>1&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;--&gt;&nbsp;&nbsp;1 (1 or 0) (1 or 0) 0<br>&nbsp;<span title="Dane wej¶ciowe">Dane Wej¶c.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="Użytkownik może wybrać">Użyt. może wybrać</span></td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=wrm ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WRM (<span title='Zapisz akumulator do znaku pamieci RAM'>Write accumulator into RAM character</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0000</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; M</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora jest zapisywana w wybranym wcze¶niej miejscu w pamięci głównej RAM. Akumulator i przeniesienie/link pozostaja nienaruszone.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=wro ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WRO (<span title='Zapisz akumulator do znaku stanu pamieci RAM 0'>Write accumulator into RAM status character 0</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0100</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; MS0</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora jest zapisywana w znaku stanu 0 pamięci RAM wcze¶niej wybranego rejestru RAM. Akumulator i przeniesienie/link pozostaja nienaruszone.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id= wr1></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WR1 (<span title=' Zapisz akumulator do znaku stanu pamieci RAM 1'>Write accumulator into RAM status character 1</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0101</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; MS1</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=wr2 ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WR2 (<span title='Zapisz akumulator do znaku stanu pamieci RAM 2'>Write accumulator into RAM status character 2</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0110</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; MS2</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=wr3 ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WR3 (<span title='Zapisz akumulator do znaku stanu pamieci RAM 3'>Write accumulator into RAM status character 3</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0111</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; MS3</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=wrr ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WRR (<span title='Pisz port ROM.'>Write ROM port</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0010</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; ROM output lines</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora jest przenoszona do portu wyj¶ciowego ROM wybranego wcze¶niej układu ROM. Dane s± dostępne na pinach wyj¶ciowych, dopóki nowy WRR nie zostanie wykonany na tym samym chipie. Tre¶ć ACC i przeniesienie/link pozostaja nienaruszone. (Bit LSB akumulatora pojawia się na I/O 0, styk 16, 4001). Żadna operacja nie jest wykonywana na liniach I/O zakodowanych jako wej¶cia.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=wmp ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>WMP (<span title='Napisz port pamieci'>Write memory port</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 0001</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; RAM output register</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora jest przenoszona do portu wyj¶ciowego RAM wcze¶niej wybranego układu RAM. Dane s± dostępne na pinach wyj¶ciowych, dopóki nowy WMP nie zostanie wykonany na tym samym układzie RAM. Nie ma to wpływu na zawarto¶ć ACC i przeniesienie/link. (Bit LSB akumultora pojawia się na O0, Pin 16 w 4002.)</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=adm ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>ADM (<span title='Dodaj od pamieci z przeniesieniem'>Add from memory with carry</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1011</td></tr>
+		<tr><td>Symbolic:</td><td>(M) + (ACC) + (CY) --&gt; ACC, CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć wybranej wczesniej pamięci głównej RAM jest dodawana do akumulatora z przeniesieniem. Charakter pamięci RAM pozostaje niezmieniony.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=sbm ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>SBM (<span title='Odejmij od pamieci z pozyczka'>Subtract from memory with borrow</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1110 1000</td></tr>
+		<tr><td>Symbolic:</td><td>~(M) + (ACC) + ~(CY) --&gt; ACC, CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć poprzednio wybranej postaci RAM jest odejmowana od akumulatora z pożyczka. Charakter pamięci RAM pozostaje niezmieniony.</td></tr>
+	</tbody></table>
+	</td></tr>
+</tbody></table>
+<br><br>
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+	<tbody><tr align="left"><td>Instrukcje dotycz&#261;ce Grupy Akumulatorów</td></tr>
+	<tr align="left"><td><br>
+
+    <a id=clb ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>CLB (<span title='Czyscic oba'>Clear both</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0000</td></tr>
+		<tr><td>Symbolic:</td><td>0 --&gt; ACC, 0 --&gt; CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Ustaw akumulator i przeniesienie/link na 0.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=clc ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>CLC (<span title='Czyszczenie przeniesienia'>Clear carry</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0001</td></tr>
+		<tr><td>Symbolic:</td><td>0 --&gt; CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Ustaw przeniesienie/link na 0.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=cmc ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>CMC (<span title='Uzupelnianie przeniesienia'>Complement carry</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0011</td></tr>
+		<tr><td>Symbolic:</td><td>~(CY) --&gt; CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Tre¶ć przeniesienia/linku jest uzupełniana.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=stc ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>STC (<span title='Ustaw przeniesienie'>Set carry</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 1010</td></tr>
+		<tr><td>Symbolic:</td><td>1 --&gt; CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Ustaw przeniesienie/link na 1</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=cma ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>CMA (<span title='Uzupelnianie akumulatora'>Complement Accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0100</td></tr>
+		<tr><td>Symbolic:</td><td>~a3 ~a2 ~a1 ~a0 --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Uzupełnienie zawarto¶ci akumulatora. Nie ma to wpływu na przeniesienie/link.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=iac ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>IAC (<span title='Zwiekszanie akumulatora'>Increment accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0010</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) +1 --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora jest zwiększana o 1. Brak przepełnienia ustawia przeniesienie/link na 0; przepełnienie ustawia carry/link na 1.</td></tr>
+	</tbody></table>
+	<br>
+   
+    <a id=dac ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>DAC (<span title='Zmniejszanie akumulatora'>decrement accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 1000</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC)	- 1 --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora jest zmniejszana o 1. Pożyczka ustawia przeniesienie/link na 0; brak pożyczki ustawia przeniesienie/link na 1.</td></tr>
+		<tr valign="top"><td>PRZYKŁAD:</td><td align="center">(ACC)<br>|<br>&nbsp;&nbsp;&nbsp;&nbsp;a3 a2 a1 a0<br>+)&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------------<br>C4&nbsp;&nbsp;S3&nbsp;S2&nbsp;S1&nbsp;S0<br>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>CY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACC</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=ral ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RAL (<span title='Obrót w lewo'>Rotate left</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0101</td></tr>
+		<tr><td>Symbolic:</td><td>C0 --&gt; a0, a(i) --&gt; a(i+1), a3 --&gt;CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora i przeniesienia/link s± obracane w lewo.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=rar ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>RAR (<span title='Obróc w prawo'>Rotate right</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0110</td></tr>
+		<tr><td>Symbolic:</td><td>a0 --&gt; CY, a(i) --&gt; a(i-1), C0 --&gt;a3</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć akumulatora i przeniesienia/link s± obracane w prawo.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=tcc ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>TCC (<span title='Transfer przeniesienia i czysc'>Transmit carry and clear</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 0111</td></tr>
+		<tr><td>Symbolic:</td><td>0 --&gt; ACC, (CY) --&gt; a0, 0 --&gt; CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Akumulator jest wyczyszczony. Najmniej znacz±ca pozycja akumulatora jest ustawiona na warto¶ć przeniesienia/link. <br> Przeniesienie/link jest ustawione na 0.</td></tr>
+	</tbody></table>
+	<br>
+    
+    <a id=daa ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>DAA (<span title='Akumulator regulacji dziesietnej'>Decimal adjust accumulator</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 1011</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) + (0000 or 0110) --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Akumulator jest zwiększany o 6, je¶li albo przeniesienie/link ma warto¶ć 1 lub je¶li zawarto¶ć akumulatora jest większa niż 9. <br> Przeniesienie/link jest ustawione na 1, je¶li wynik generuje przeniesienie, w przeciwnym razie nie ma to wpływu.</td></tr>
+	</tbody></table>
+	<br>
+
+    <a id=tcs ></a>
+	<table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>TCS (<span title='Transfer przeniesienia odejmowania'>Transfer carry subtract</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 1001</td></tr>
+		<tr><td>Symbolic:</td><td>1001 --&gt; ACC if (CY) = 0<br>1010 --&gt; ACC if (CY) = 1<br>0 --&gt; CY</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Akumulator jest ustawiony na 9, je¶li przeniesienie/kink ma warto¶ć 0. <br> Akumulator jest ustawiony na 10, je¶li przeniesienie/link to 1. <br> Przeniesienie/link jest ustawione na 0.</td></tr>
+	</tbody></table>
+	<br>
+	
+       <a id=kbp ></a>
+        <table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>KBP (<span title='Proces klawiatury'>Keyboard process</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 1100</td></tr>
+		<tr><td>Symbolic:</td><td>(ACC) --&gt; KBP, ROM --&gt; ACC</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Konwersja kodu jest wykonywana na zawarto¶ci akumulatora, z 1 z n na kod binarny. Je¶li zawarto¶ć akumulatora ma więcej niż jeden bit, akumulator zostanie ustawiony na 15 (aby wskazać bł±d). Nie ma to wpływu na przeniesienie/link. <br> Tabela konwersji jest pokazana poniżej:<br><br>
+		<center><table border="0" cellpadding="0" cellspacing="0" width="90%" class="tekst">
+		<tbody><tr align="center"><td>(ACC) przed KBP</td><td>&nbsp;<br>&nbsp;</td><td>(ACC) <span title='after'>po</span> KBP</td>
+		</tr><tr align="center"><td>0000</td><td>----&gt;</td><td>0000</td>
+		</tr><tr align="center"><td>0001</td><td>----&gt;</td><td>0001</td>
+		</tr><tr align="center"><td>0010</td><td>----&gt;</td><td>0010</td>
+		</tr><tr align="center"><td>0100</td><td>----&gt;</td><td>0011</td>
+		</tr><tr align="center"><td>1000</td><td>----&gt;</td><td>0100</td>
+		</tr><tr align="center"><td>0011</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>0101</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>0110</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>0111</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>1001</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>1010</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>1011</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>1100</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>1101</td><td>----&gt;</td><td>1111</td>
+		</tr><tr align="center"><td>1110</td><td>----&gt;</td><td>1111<br></td>
+		</tr><tr align="center"><td>1111</td><td>----&gt;</td><td>1111<br></td>
+		</tr></tbody></table><br></center></td></tr>
+	</tbody></table>
+	<br>
+	
+        <a id=dcl></a>
+        <table border="1" cellpadding="0" cellspacing="0" width="400" bgcolor="#959595" class="tekst">
+		<tbody><tr><td width="20%">Mnemonic:</td><td>DCL (<span title='Wyznaczenie linii komendy'>Designate command line</span>)</td></tr>
+		<tr><td>OPR OPA:</td><td>1111 1101</td></tr>
+		<tr><td>Symbolic:</td><td>a0 --&gt; CM0, a1 --&gt; CM1, a2 --&gt; CM2</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawarto¶ć trzech najmniej znacz±cych bitów akumulatora jest przesyłana do rejestru sterowania komendami w CPU. Ta instrukcja zapewnia wybór banku RAM, gdy używanych jest wiele banków RAM (je¶li nie jest wysyłana żadna instrukcja DCL, numer zerowego banku RAM jest wybierany automatycznie po zastosowaniu co najmniej jednego RESETU). DCL pozostaje zablokowany, dopóki nie zostanie zmieniony.<br>
+		<br>Wyboru dokonuje sie zgodnie z poniższ± tabel± prawdy.<br>
+		<center><table border="0" cellpadding="0" cellspacing="0" width="90%" class="tekst">
+		<tbody><tr align="left"><td>(ACC)</td><td>CM-RAMi Enabled</td><td>Bank No.</td>
+		</tr><tr align="left"><td>---------</td><td>------------------------</td><td>------------</td>
+		</tr><tr align="left"><td>X000</td><td>CM-RAM0</td><td>Bank 0</td>
+		</tr><tr align="left"><td>X001</td><td>CM-RAM1</td><td>Bank 1</td>
+		</tr><tr align="left"><td>X010</td><td>CM-RAM2</td><td>Bank 2</td>
+		</tr><tr align="left"><td>X100</td><td>CM-RAM3</td><td>Bank 3</td>
+		</tr><tr align="left"><td>X011</td><td>CM-RAM1, CM-RAM1</td><td>Bank 4</td>
+		</tr><tr align="left"><td>X101</td><td>CM-RAM1, CM-RAM3</td><td>Bank 5</td>
+		</tr><tr align="left"><td>X110</td><td>CM-RAM2, CM-RAM3</td><td>Bank 6</td>
+		</tr><tr align="left"><td>X111</td><td>CM-RAM1, CM-RAM2, CM-RAM3</td><td>Bank 7</td>
+		</tr></tbody></table><br></center></td></tr>	
+	</tbody></table>
+
+	<!-- dodatek - wieksze litery-->
+	</td></tr>
+</tbody></table>
+<br><hr title='instrukcje alfabetycznie' style=height:1px;>
+	 <a href=#add >add</a> <a href=#adm >adm</a> <a href=#bbl >bbl</a> <a href=#clb >clb</a> <a href=#clc >clc</a> <a href=#cma >cma</a> <a href=#cmc >cmc</a> <a href=#daa >daa</a> <a href=#dac >dac</a> <a href=#dcl >dcl</a> <a href=#fim >fim</a> <a href=#fin >fin</a> <a href=#iac >iac</a> <a href=#inc >inc</a> <a href=#isz >isz</a> <a href=#jcn >jcn</a> <a href=#jin >jin</a> <a href=#jms >jms</a> <a href=#jun >jun</a> <a href=#kbp >kbp</a> <a href=#ld >ld</a> <a href=#ldm >ldm</a> <a href=#nop >nop</a> <a href=#ral >ral</a> <a href=#rar >rar</a> <a href=#rd0 >rd0</a> <a href=#rd1 >rd1</a> <a href=#rd2 >rd2</a> <a href=#rd3 >rd3</a> <a href=#rdm >rdm</a> <a href=#rdr >rdr</a> <a href=#sbm >sbm</a> <a href=#src >src</a> <a href=#stc >stc</a> <a href=#sub >sub</a> <a href=#tcc >tcc</a> <a href=#tcs >tcs</a> <a href=#wmp >wmp</a> <a href=#wrm >wrm</a> <a href=#wro >wr0</a> <a href=#wr1 >wr1</a> <a href=#wr2 >wr2</a> <a href=#wr3 >wr3</a> <a href=#wrr >wrr</a> <a href=#xch >xch</a> <hr color=gray>
+</center>
+
+
+
+</body></html>
