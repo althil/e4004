@@ -1,1 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0049)file:///D:/dziatfa/emulators/MCS-4/emu/index.html -->
+<html class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>e4004</title><!--
+		
+		--><!--<script language="JavaScript" type="text/javascript" src="./4004_files/4004cpu.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./4004_files/4004gui.js"></script>
+		<link rel="stylesheet" href="./4004_files/4004_style.css" type="text/css">-->
+		<script language="JavaScript" type="text/javascript" src="./varia/4004cpu_pl.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./varia/4004gui_pl.js"></script><!--
+		dodane -->
+		<script language="JavaScript" type="text/javascript" src="../varia/4004asm_pl.js"></script>
+		<link rel="stylesheet" href="./varia/4004_style.css" type="text/css">
+	<style type="text/css" 
 
+a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-syndicated="true"],#MAIN.ShowTopic > 
+
+</style><link type="text/css" rel="stylesheet" charset="UTF-8" href="./varia/translateelement.css"></head>
+	<body>
+		<div id="main">
+			<h2>EMULATOR SYSTEMU INTEL 4004 (wersja początkowa)</h2>
+			<div id="left">
+			<h3>4002 RAM:
+					<select id="select1-1">
+						<option value="0" selected="selected">BANK #0</option>
+						<option value="1">BANK #1</option>
+						<option value="2">BANK #2</option>
+						<option value="3">BANK #3</option>
+					</select>
+					<select id="select1-2">
+						<option value="0" selected="selected">CHIP #0</option>
+						<option value="1">CHIP #1</option>
+						<option value="2">CHIP #2</option>
+						<option value="3">CHIP #3</option>
+					</select>
+				 </h3>
+				<div id="ram_0" class="box ram">
+					<table id="memory_0" class="memory">
+						<tbody><tr><th style="width: 100px;"></th><th colspan="17">PAMIĘĆ GŁÓWNA</th></tr>
+						<tr><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+						<tr><th class="left">REJESTR 0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left">REJESTR 1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left">REJESTR 2</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left">REJESTR 3</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>				
+					</tbody></table>
+					
+					<table id="status_0" class="status">
+						<tbody><tr><th colspan="4">STATUS</th></tr>
+						<tr><th>0</th><th>1</th><th>2</th><th>3</th></tr><!--
+						<tbody><tr><th colspan="4">STATUS</th></tr>
+						<tr><th>0</th><th>1</th><th>2</th><th>3</th></tr>-->
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>		
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>		
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>		
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>				
+					</tbody></table>
+					
+					<br style="clear: both;">
+					<h3>WYJŚCIA:</h3>
+					<table id="outputs_0" class="outputs">
+						<tbody><tr><th class="left">Q0</th><th class="left">Q1</th><th class="left">Q2</th><th class="left">Q3</th></tr>
+						<tr><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td></tr>
+					</tbody></table><!--
+					<input type="button" value="NASTAWIĆ" name="reset" class="reset">--><!-- onclick="_resetRam" --><!-- <input type="button" value="RESET" name="reset" class="reset" id="resetRAM"> --><!--
+					<input type="button" value="RESET" name="reset" class="reset" id="resetRam1">-->
+					<!--<input type="button" value="RESET" onclick="resetRam0();" name="reset" class="reset" style="width:90px;" title="cała RAM"> -->
+					<input type="button" value="RESET" id="resetRam1" name="reset" class="reset" style="width:90px;">
+					<!--<input type="button" value="RESET" name="reset" class="reset" style="width:90px;">-->
+				</div>
+				
+				<h3>4002 RAM:
+					<select id="select2-1">
+						<option value="0" selected="selected">BANK #0</option>
+						<option value="1">BANK #1</option>
+						<option value="2">BANK #2</option>
+						<option value="3">BANK #3</option>
+					</select>
+					<select id="select2-2">
+						<option value="0">CHIP #0</option>
+						<option value="1" selected="selected">CHIP #1</option>
+						<option value="2">CHIP #2</option>
+						<option value="3">CHIP #3</option>
+					</select>
+				 </h3>
+				<div id="ram_1" class="box ram">
+					<table id="memory_1" class="memory">
+						<tbody><tr><th style="width: 100px;"></th><th colspan="17">PAMIĘĆ GŁÓWNA</th></tr>
+						<tr><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+						<tr><th class="left">REJESTR 0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left">REJESTR 1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left">REJESTR 2</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left">REJESTR 3</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+					</tbody></table>
+					
+					<table id="status_1" class="status">
+						<tbody><tr><th colspan="4">STATUS</th></tr>
+						<tr><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>		
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>		
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>		
+						<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>				
+					</tbody></table>
+					
+					<br style="clear: both;">
+					<h3>WYJŚCIA:</h3>
+					<table id="outputs_1" class="outputs">
+						<tbody><tr><th class="left">Q0</th><th class="left">Q1</th><th class="left">Q2</th><th class="left">Q3</th></tr>
+						<tr><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td></tr>
+					</tbody></table><!--
+					<input type="button" value="NASTAWIĆ" name="reset" class="reset">--><!--
+					<input type="button" value="RESET" name="reset" class="reset" id="resetRAM">--><!-- _resetRam --><!--
+					id="clearRAM" --><!-- id="reset" --><!--
+					<input type="button" value="RESET" onclick="resetRam0(what);" name="reset" class="reset" id="resetRam2">-->
+					<!--<input type="button" value="RESET" id="resetRam1" class="reset" style="width:90px;">-->
+					<input type="button" value="RESET" name="reset" class="reset" style="width:90px;" title='brak'>
+				</div>
+				
+				<h3>4001 ROM:</h3>
+				<div id="io" class="box" ><!--style="padding-top: 2px;"-->
+					<b style="margin-left:1.5em;">PORT <span title=WE/WY>I/O</span>:</b>
+					<table id="port" class="port" style="margin-left: 120px; margin-top: -10px">
+						<!-- style="float: center; margin: 15px 0 5px 20px;" -->
+						<tbody>
+						<tr><th class="left" >Q0</th><th class="left">Q1</th><th class="left">Q2</th><th class="left" >Q3</th></tr>
+						<tr><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td></tr>
+					</tbody></table>
+					<!-- dodane -->
+					<table>
+						<!-- --><form style="width: 700px; text-align: left;" name="ass" onsubmit="return false"><!-- -->
+						<textarea name="srcfield" rows="4" cols="56" wrap="virtual" style="width: 94%; margin: -5px 0 0 10px; background-color: #000; color: lightgray; overflow-y:"></textarea>
+						<!-- top,r,b,l - 30%
+						<textarea name="codefield" class="formField" rows="2" cols="10" wrap="virtual" style="width: 54%; float: right; margin: 0 1em 0 0;color: #fff" readonly=""></textarea>-->
+						
+						<br style="clear: both;">
+						<textarea name="listing" class="formField" rows="4" cols="34" wrap="virtual" style="width: 46%; float: left; margin: 0 0 0 10px; background-color: #000; color: silver;" readonly="">listing</textarea><!-- 29% , margin: -10.9em 10.6em;
+						pole kodu hex 
+						--><textarea name="hexfield" class="formField" rows="4" cols="27" wrap="virtual" style="width: 46%; float: right; margin: 0 10px 0 0; background-color: #000; color: gray;" readonly="">hex</textarea><!-- margin: -10.9em 0.9em; -->
+						
+						<!--</form>-->
+					</table>
+					<br style="clear: both;">
+					<input type="button" value="ASEMBLACJA" onclick="assemble();" style="float: right; margin: 0 5px; width:90px;">
+					<!-- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . -->
+				</div>			
+			</div>
+			
+			<div id="right">
+				<h3><font style="vertical-align: inherit;">4004 CPU:</font></h3>
+				<div id="cpu" class="box">
+					<div class="leftDiv">
+						<table id="pc">
+							<tbody><tr><th style="width: 80px;"></th><td colspan="3"><span>STOS</span></td></tr>
+							<tr><th class="left"><span title="PC">LP</span></th><td>0</td><td>0</td><td>0</td></tr>
+							<tr><th class="left">POZIOM 1</th><td>0</td><td>0</td><td>0</td></tr>
+							<tr><th class="left">POZIOM 2</th><td>0</td><td>0</td><td>0</td></tr>
+							<tr><th class="left">POZIOM 3</th><td>0</td><td>0</td><td>0</td></tr>
+						</tbody></table>
+					
+						<table id="registers">
+							<tbody><tr><td colspan="8"><span>REJESTRY</span></td></tr>
+							<tr><th>R0</th><th>R1</th><td>0</td><td>0</td>   <th>R8</th><th>R9</th><td>0</td><td>0</td></tr>
+							<tr><th>R2</th><th>R3</th><td>0</td><td>0</td>   <th>RA</th><th>RB</th><td>0</td><td>0</td></tr>
+							<tr><th>R4</th><th>R5</th><td>0</td><td>0</td>   <th>RC</th><th>R<!-- &amp; -->D</th><td>0</td><td>0</td></tr>
+							<tr><th>R6</th><th>R7</th><td>0</td><td>0</td>   <th>RE</th><th>RF</th><td>0</td><td>0</td></tr>
+						</tbody></table>
+
+						<div>
+							<span id="accu"><b>AKUMULATOR:</b> <span>0 [0000]</span></span>
+							<span id="carry"><b><span title=przeniesienie>PRZENIES.</span>:</b> <input type="checkbox" disabled="disabled"></span>
+							<span id="test"><b>TEST:</b> <input type="checkbox" disabled="disabled"></span>
+							<br><br>
+							<span id="dassem"> <span>000 00   </span> <span>NOP</span> </span>
+							<span id="cycles"><b>CYKLE:</b> 0</span>
+						</div>
+					</div>
+					<div class="rightDiv">
+						<input type="button" value="KROK" id="step"><br>
+						<input type="button" value="ANIMOWAĆ" id="animate" title=animowane><br>
+						<input type="button" value="URUCHOMIENIE" id="run"><br>
+						<input type="button" value="STOP" id="stop"><br>
+						<input type="button" value="RESET" id="resetCPU">
+					</div>
+				</div>
+			
+				<h3>KONFIGURACJA:</h3>
+				<div id="conf" class="box">
+					<div class="leftDiv">
+						<input type="radio" id="hardware_0" name="hardware" checked="true"> Ogólna<br>
+						<input type="radio" id="hardware_1" name="hardware" onchange="testFlag = this.checked;"> Sprzęt Intel 4001-0009 ( <a href="http://e4004.szyc.org/emu/varia/MCS-4_Evaluation_Kit_4001_0009.pdf">link</a> )<br>
+						<input type="radio" id="hardware_2" name="hardware" onchange="mcsFlag = this.checked;"> Sprzęt MCS-4/40 (<span title='nie zaimplementowane'>link</span>)
+					</div>
+
+					<div class="rightDiv">
+						<input title="Punkty Zatrzymania" type="button" value="PunktyZatrzym. " id="bp"><br>
+						<input title="RESET Wszystkiego" type="button" value="RESET Wszyst." id="ra">
+						
+					</div>
+				</div>
+					
+				<h3><font style="vertical-align: inherit;">Blok ROM:</font></h3>
+				<div id="rom" class="box">
+					<div class="leftDiv">
+						<table><!--<form style="width: 700px; text-align: left;" name="ase" onsubmit="return false">-->
+							<!--<textarea id="data"></textarea>-->
+							<textarea id="data" name="codefield"></textarea><!----><br><!-- hexfield . . . . . . . . -->
+						</form></table>
+						<div style="margin-top: 10px;">
+							<input type="checkbox" id="dasm"> <b>Kod <span title=montażowy><font color=lightgreen>assembling</font></span></b>
+							<input type="checkbox" id="ascii"> <b>ASCII</b>
+						</div>
+					</div>
+					
+					<div class="rightDiv">
+						<input type="button" value="ZAŁADUJ" id="load"><br>
+						<input type="button" value="RESET" id="resetROM"><br><br><br>
+						<input type="button" value="P1" id="p1"><br>
+						<input type="button" value="P2" id="p2"><br>
+						<input type="button" value="P3" id="p3" title='nie zaimplementowane'>
+					</div>
+				</div>			
+			</div>
+			<br style="clear: both;">
+		</div>
+		<div id="description">
+			<div class="title">Co to jest emulator e4004?</div>
+			<p>Emulator e4004 jest bardzo złożonym emulatorem systemu INTEL 4004. Emulowane są wszystkie rejestry i flagi bloku CPU. Emulowane są również wszystkie rejestry systemu pamięci RAM i pamięci ROM. Pełny kod tego oprogramowania jest całkowicie napisany w JavaScript, więc powinien być w stanie wykonać na dowolnej platformie z przeglądarką internetową i zaimplementować interpreter CSS2 i JavaScript.</p>
+
+			<div class="title">Funkcje Assemblera as4004</div>
+			<ul>
+				<li>Intuicyjny interfejs użytkownika 6 paneli.</li>
+				<li>Minimalne wymagania systemowe to przeglądarka internetowa z interpreterem JavaScript i CSS2.</li>
+				<li>Kod obiektu może być używany z <a href="../asm.html">asemblera as4004</a> .</li>
+				<li>Różnorodna konfiguracja sprzętu</li>
+				<li>Dostępny jest pojedynczy tryb „krok”, „<span title=animować>animacja</span>” i „uruchamianie”</li>
+				<li>Możliwość demontażu <small>~'deasemblacji'~</small> kodu</li>
+				<li>Dostępny jest system punktów przerwania</li>
+				<li>Możliwość zmiany danych wszystkich rejestrów i flag.</li>
+				<li>Emulator jest całkowicie darmowy.</li>
+			</ul>
+
+			<div class="title">Uruchamianie emulatora e4004</div>
+			<ul>
+				<li>Wprowadź kod obiektów do panelu „<span title='Blok ROM'>ROM block</span>”.</li>
+				<li>Kliknij przycisk „ZAŁADUJ”.</li>
+				<li>W „bloku ROM” można zobaczyć zrzut pamięci ROM.</li>
+				<li>Można również wyświetlić kod demontażu.</li>
+				<li>Kliknij przycisk „<span title=ANIMOWAĆ>ANIMATE</span>” w panelu „4004 CPU”.</li>
+				<li>Program będzie działał krok po kroku.</li>
+			</ul>
+
+			<div class="title">Szybki start</div>
+			<p>Ta część opisu jest przeznaczona dla tych, którzy chcą zobaczyć emulator e4004 w akcji demonstracyjnej. To może być łatwe do zrealizowania. Wystarczy nacisnąć jeden z opisanych poniżej przycisków, a następnie nacisnąć przycisk <span title=ANIMOWAĆ>„ANIMATE”</span>.</p><br><br>
+			<h3>
+				<b>Przycisk „P1”</b> - program testujący pamięć RAM
+			</h3>
+			<br><br>
+			<div class="frame">
+			<div class="code">
+; ram_test.asm
+; test Intel 4002 
+init
+	FIM R0R1, 0    ; inicjalizuj R0=R1=0
+	FIM R2R3, 0    ; zainicjuj R2=R3=0
+	LDM 12         ; załaduj 12 do akumulatora 
+	XCH R2         ; zainicjuj R2=12
+loop1
+	SRC R0R1       ; wybierz rejestr &amp; adres
+	WRM            ; zapisz akumulator do pamięci
+	IAC            ; przyrostowy akumulator
+	ISZ R1, loop1  ; pętla 16 razy
+	INC R0         ; przyrost R0
+	ISZ R2, loop1  ; pętla 4 razy
+
+	FIM R0R1, 0    ; inicjalizuj R0=R1=0
+	FIM R2R3, 0    ; zainicjuj R2=R3=0
+	LDM 12         ; załaduj 12 do akumulatora
+	XCH R2         ; zainicjuj R2=12
+loop2
+	SRC R0R1       ; wybierz rejestr &amp; adres
+	WR0            ; napisz znak statusu 0
+	IAC            ; przyrostowy akumulator
+	WR1            ; wpisz status znaku 1
+	IAC            ; przyrostowy akumulator
+	WR2            ; wpisz status znaku 2
+	IAC            ; akumulator przyrostowy 
+	WR3            ; wpisz znak statusu 3
+	IAC            ; przyrostowy akumulator
+	INC R0         ; przyrost R0
+	ISZ R2, loop2  ; pętla 4 razy
+
+DONE
+	JUN DONE       ; niekończąca się pętla jako koniec programu
+
+			</div>
+			</div>
+			<br><br>
+			<h3>
+				<b>Przycisk „P2”</b> - ZESTAW OCENY MCS-4 Z WYKORZYSTANIEM <a href="http://e4004.szyc.org/emu/varia/MCS-4_Evaluation_Kit_4001_0009.pdf">4001-0009</a>
+			</h3>
+			<br>
+			<p>Zestaw ten zapewnia zarówno wygodny sposób oceny części MCS-4, jak i pojazd edukacyjny, aby lepiej zrozumieć działanie MCS-4. <a href="varia/MCS-4_Evaluation_Kit_4001_0009.pdf">4001-0009</a> 
+			mikroprogramowanych że skorzysta z 4004 i 4002  i wykonuje wszystkie 45 instrukcje w  <!--<a href="iset.html">--><a href="../iset.html"> zestawie  instrukcji MCS-4 .</a></p>
+
+			<br><br><br>
+			<b>Przycisk „P3”</b> - jeszcze nie wdrożony
+			<br><br>
+		</div><!--
+		
+	 --><div id="break" class="window" style="width: 230px; height: 402px; top: 133px; left: 397px; display: none;"></div><!--
+		
+		--><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><!--
+		--><div style="padding: 8px;"><hr style="color: #CCC; background-color: #CCC; height: 1px; "><div><!--
+			--><div class="logo"><!--<img src="./4004_files/translate_24dp.png" width="20" height="20" alt="Google Tłumacz">--><!--<img src="./varia/translate_24dp.png" width="20" height="20" alt="Google Tłumacz">--></div><!--
+		--></div><!--
+		</div><!--
+		<div class="top" style="padding: 8px; float: left; width: 100%;">-->
+		<!--<h1 class="title gray">Tekst oryginalny : http://e4004.szyc.org/</h1></div>--><!--
+		<div class="middle" style="padding: 8px;"><div class="original-text"></div></div>--><!--
+		<div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link"> tłumaczenie pl</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div>--><!--
+	 --></div><!--
+	
+	</circle></svg></div></div>--><!--
+
+ --></body></html>
