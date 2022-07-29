@@ -1,4 +1,4 @@
-# e4004
+# e4004 PL
 ```
                    I/O   I/O   I/O   I/O   Vdd    CM   TEST  RESET
                     --    --    --    --    --    --    --    --
