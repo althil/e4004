@@ -41,11 +41,11 @@ Krótka historia Intel 4004. [Chip](https://www.intel.com/content/www/us/en/hist
 
 [4004 Arkusz danych](https://datasheet4u.com/datasheet-pdf/Intel/4004/pdf.php?id=787753)*
 
-[Manual Programowania Języka Asemblera MCS4 - Grudzień 1973](http://www.nj7p.org/Manuals/PDFs/Intel/MCS-4_ALPM_Dec73.pdf)*
+[Manual Programowania w Asemblerze MCS4 - Grudzień 1973](http://www.nj7p.org/Manuals/PDFs/Intel/MCS-4_ALPM_Dec73.pdf)*
 
-Zalecany emulator online [Emulator - Assembler - Disassembler](http://e4004.szyc.org/)
+Wersja emulatora online [Emulator - Assembler - Disassembler](http://e4004.szyc.org/)
 
-[Github w języku angielskim](https://github.com/lpg2709/emulator-Intel-4004)
+[Github w języku angielskim, pliki źródłowe](https://github.com/lpg2709/emulator-Intel-4004)
 
 ## Licencja
 
