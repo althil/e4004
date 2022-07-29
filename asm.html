@@ -1,0 +1,325 @@
+
+<!-- saved from url=(0030)http://e4004.szyc.org/asm.html -->
+<html class="translated-ltr"><head><!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">--><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+
+<meta http-equiv="imagetoolbar" content="no">
+<title>Asembler Intel 4004</title>
+<meta name="description" content="A JavaScript assembler for the Intel 4004 CPU">
+<meta name="keywords" content="Intel 4004 assembler, i4004 assembler, JavaScript, olbits.eu">
+
+
+<!--
+  Intel 4004 assembler in JavaScript
+  by Maciej Szyc (e4004'at'szyc.org)
+  February 2007, Swidnica, Poland.
+
+  This program is free software; you can redistribute it and/or modify it under the terms of version 2
+  of the GNU General Public License as published by the Free Software Foundation.
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  See the GNU General Public License for more details.  http://www.gnu.org/
+-->
+
+<!--<script language="JavaScript" type="text/javascript" src="./Intel 4004_files/4004asm.js"></script>--><SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="varia/4004asm_pl.js"></SCRIPT>
+
+</style><!--
+<link rel="stylesheet" href="./Intel 4004_files/style.css" type="text/css">-->
+<link rel="stylesheet" href="varia/style.css" type="text/css">
+
+<!--<link type="text/css" rel="stylesheet" charset="UTF-8" href="./Intel 4004_files/translateelement.css"></head>--><link type="text/css" rel="stylesheet" charset="UTF-8" href="./varia/translateelement.css"></head>
+
+<body bgcolor="#A7A7A7" text="#ffffff" link="#D4DCE5" vlink="#D4DCE5" alink="#BB0000" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginheight="0" marginwidth="0" style="border:0">
+
+<br>
+<center>
+<!-- TABLE -->
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+	<tbody><tr valign="top">
+	<td align="left">
+	<b><font style="vertical-align: inherit;">Intel 4004 Microprocessor Assembler</font></b>
+	</td>
+	<td align="right"><form name="home"><!--
+	<font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="button" value="Dom" class="isButton" onclick="self.location.href=(&#39;index_en.html&#39;)"></font></font>-->
+	<input type="button" value="dom" title=home class="isButton" onclick="self.location.href=(&#39;index_pl.html&#39;)">
+	</form></td>
+	</tr>
+</tbody></table>
+
+<!-- ass
+	<TABLE BORDER="0" CELLSPACING="7" CELLPADDING="0">
+	<FORM NAME="ass" onsubmit="return false">
+	<TR VALIGN="top">
+		<TD COLSPAN="2" CLASS="disp1">source code:</TD>
+		<TD CLASS="disp1">object code:</TD>
+	</TR>
+	<TR VALIGN="top">
+		<TD COLSPAN="2"><TEXTAREA NAME="srcfield" CLASS="formField" ROWS="12" COLS="56" WRAP="virtual"></TEXTAREA></TD>
+		<TD><TEXTAREA NAME="codefield" CLASS="formField" ROWS="12" COLS="24" WRAP="virtual" READONLY></TEXTAREA></TD>
+	</TR>
+	<TR VALIGN="bottom">
+		<TD><DIV ID="dispNo" CLASS="disp1" ALIGN="left">listing: $000</DIV></TD>
+		<TD COLSPAN="2" CLASS="disp1" ALIGN="left">hex code:</TD>
+	</TR>
+	<TR VALIGN="bottom">
+		<TD><TEXTAREA NAME="listing" CLASS="formField" ROWS="12" COLS="22" WRAP="virtual" READONLY></TEXTAREA></TD>
+		<TD COLSPAN="2"><TEXTAREA NAME="hexfield" CLASS="formField" ROWS="12" COLS="40" WRAP="virtual" READONLY></TEXTAREA></TD>
+	</TR>
+	<TR VALIGN="top">
+		<TD COLSPAN="3" ALIGN="right">
+			<INPUT TYPE="button" VALUE="generate code" onclick="assemble()" CLASS="isButton"></TD>
+	</TR>
+	</TABLE>
+
+/ass -->
+
+<form style="width: 700px; text-align: left;" name="ass" onsubmit="return false">
+<div><span style="width: 70%; display: block; float: left;" class="disp1">kod &#378;ród&#322;owy: </span><span style="display: block; float: left" class="disp1"><span title='kod obiektu'><font color=green>program wynikowy</span>:</span></div><br style="clear: both;"><!-- 
+	pole  zródlowe 
+	--><textarea name="srcfield" class="formField" rows="12" cols="56" wrap="virtual" style="width: 69%; float: left;"></textarea><!-- 
+	pole kodu obiketu 
+	--><textarea name="codefield" class="formField" rows="12" cols="24" wrap="virtual" style="width: 30%; float: right;" readonly=""></textarea><br style="clear: both;">
+
+
+<div style="margin-top: 10px;"><span id="dispNo" class="disp1" align="left" style="width: 25%; display: block; float: left;">listing: $000</span> <span style="display: block; float: right; width: 35%;" class="disp1">kod szesnastkowy: </span></div>
+<br style="clear: both;">
+
+<!-- pole listing -->
+<textarea name="listing" class="formField" rows="12" cols="22" wrap="virtual" style="width: 64%; float: left;" readonly=""></textarea><!-- 
+pole kodu hex 
+--><textarea name="hexfield" class="formField" rows="12" cols="40" wrap="virtual" style="width: 35%; float: right;" readonly=""></textarea><!--
+
+--><br style="clear: both;">
+<input type="button" value="wygeneruj kod" onclick="assemble();" class="isButton" style="width: 150px; float: right; margin-top: 10px;" title=obiektu>
+<br style="clear: both;">
+
+</form>
+
+<br>
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="title">Co to jest assembler as4004?</td></tr></tbody></table>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2"><font style="vertical-align: inherit;">
+  Assembler as4004 jest bardzo prostym 2-przebiegowym asemblerem mikroprocesora Intel 4004. Pe&#322;ny kod tego oprogramowania jest ca&#322;kowicie napisany w j&#281;zyku JavaScript, wi&#281;c powinien by&#263; w stanie wykona&#263; na dowolnej platformie za pomoc&#261; przegl&#261;darki internetowej i zaimplementowanego interpretera JavaScript.
+ </td></tr>
+</tbody></table>
+<br>
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="title">Funkcje Assemblera as4004</td></tr>
+</tbody></table>
+<ul>
+  <li>Intuicyjny 3-panelowy interfejs u&#380;ytkownika.</li>
+  <li>Minimalne wymagania systemowe to przegl&#261;darka internetowa z interpretatorem JavaScript.</li>
+  <li>Assembler as4004 tworzy kod formatu szesnastkowego.</li>
+  <li>Kod obiektu mo&#380;e by&#263; u&#380;ywany w  <!--<a href="./emu">--><!--<a href="./emu/index.html">--><a href="./emu/e4004_pl.html">e4004</a> emulatorze lub <a href="dasm.html">dezasemblatorze </a></font><a href="http://e4004.szyc.org/emu">e4004 .<a href="http://e4004.szyc.org/dasm.html"></a></li>
+  <li>Globalna struktura etykiety.</font></li>
+  <li>Mo&#380;liwo&#347;&#263; wprowadzania danych w ró&#380;nych formatach liczbowych.</li>
+  <li>Komentarze s&#261; dost&#281;pne.</li>
+  <li>Asembler jest ca&#322;kowicie darmowy.</li>
+</ul>
+<br>
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="title">Uruchamianie asemblera as4004</td></tr>
+</tbody></table>
+<ul>
+  <li>Wpisz swój kod w panelu &#8222;kod &#378;ród&#322;owy&#8221;.</li>
+  <li>Kliknij przycisk &#8222;wygeneruj kod&#8221;.</li>
+  <li>W tytule panelu &#8222;listing&#8221; post&#281;p procesu kompilacji mo&#380;e by&#263; &#347;ledzony.</li>
+  <li>W panelu &#8222;listing&#8221; mo&#380;na sprawdzi&#263; proces kompilacji.</li>
+  <li>Po zako&#324;czeniu procesu okna alertów poinformuj&#261; o wyniku kompilacji.</li>
+  <li>W przypadku niepowodzenia &#378;ród&#322;o mo&#380;na edytowa&#263; w panelu &#8222;kod &#378;ród&#322;owy&#8221;.</li>
+  <li>Wygenerowany kod z panelu <span title='program wynikowy'>&#8222;kod obiektu&#8221;</span> w formacie HEX jest gotowy do u&#380;ycia.</li>
+</ul>
+<br>
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="title">Szybki start</td></tr></tbody></table>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+Ta cz&#281;&#347;&#263; opisu jest przeznaczona dla tych, którzy chc&#261; zobaczy&#263; asembler as4004 w akcji. To mo&#380;e by&#263; &#322;atwe do zrealizowania. W ramce poni&#380;ej znajduje si&#281; prosty przyk&#322;ad programu mikroprocesorowego Intel 4004 - dodawanie dwóch liczb 4-bitowych. Instrukcja FIM s&#322;u&#380;y do inicjalizacji pary rejestrów R0=2 i R1=A. Program &#322;aduje nast&#281;pnie R0 do akumulatora, dodaje zawarto&#347;&#263; R1 do akumulatora, a nast&#281;pnie u&#380;ywa instrukcji XCH do wymiany warto&#347;ci R1 i akumulatora, które przechowuje wynik dodawania w R1. Nast&#281;pnie program wprowadza p&#281;tl&#281; bez ko&#324;ca, zapisan&#261; jako instrukcja JUN (skok bezwarunkowy), która przeskakuje na w&#322;asny adres. Wystarczy skopiowa&#263; ten kod i wklei&#263; go do panelu &#8222;kod &#378;ród&#322;owy&#8221;. Nast&#281;pnie kliknij przycisk &#8222;wygeneruj kod&#8221;. Je&#347;li wszystko pójdzie dobrze w panelu <span title="program wynikowy">&#8222;kod obiektu&#8221;</span>, powinien pojawi&#263; si&#281; kod wyniku w formacie HEX. 
+ </td></tr>
+</tbody></table>
+<br>
+<table width="600" cellspacing="0" cellpadding="5" border="1">
+ <tbody><tr><td class="code">
+	<pre>
+; dodaj dwie 4-bitowe liczby na Intel 4004
+;
+	FIM P0, $A2	; zainicjuj: R0=2 R1=A
+	LD R0		; za&#322;adowa&#263; R0 do akumulatora
+	ADD R1		; dodaj R1 do akumulatora
+	XCH R1		; i przechowaj w R1
+
+DONE
+	JUN DONE	; nieko&#324;cz&#261;ca si&#281; p&#281;tla jako koniec programu
+	</pre>
+ </td></tr>
+</tbody></table>
+<br><br>
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="title">Sk&#322;adnia Assembler</td></tr>
+</tbody></table>
+<ul>
+  <li>Kody i modyfikatory</li>
+</ul>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+  Instrukcje s&#261; <!--<a href="./emu/iset.html">--><a href="iset.html">mnemonikami,</a> po których nast&#281;puje (opcjonalny) modyfikator:<br>
+	<pre>
+	KOD OP		MODYFIKATORY 
+	-------		---------
+	OPC		<font color=green title=none>brak</font>
+	OPC D		<span title=data style=color:green>dane</span>
+	OPC R		<font color=green title='R0-15 '>rejestr</font>
+	OPC RX		para rejestrów
+	OPC R, AA	rejestr, adres
+	OPC P, DD	rejestru <span title=0-7><font color=green>para </font></span>, dane
+	OPC C, AA	warunek, adres
+	OPC AAA		adres
+
+    Gdzie 
+
+	D   to 4-bitowe dane
+	R   jest adresem rejestru
+	P   to adres rejestru pary
+	AA  to adres 8-bitowy
+	AAA to adres 12-bitowy
+	C   to warunek
+	</pre>
+ </td></tr>
+</tbody></table>
+<ul>
+  <li>Formaty liczbowe</li>
+</ul>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+	<pre>
+  	[0-9] 	.... 	dziesietny
+   	$<span title='np. $A2'>[0-F]</span> 	.... 	hex
+  	%[01] 	.... 	binarny
+  	0[0-7] 	.... 	ósemkowy
+	</pre>
+ </td></tr>
+</tbody></table>
+<ul>
+  <li>Etykiety i identyfikatory</li>
+</ul>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+  Identyfikatory musz&#261; zaczyna&#263; si&#281; od litery [AZ] i zawiera&#263; litery, cyfry i znak podkre&#347;lenia [AZ, 0-9, _]. Tylko 6 pierwszych znaków jest znacz&#261;cych. </font><font style="vertical-align: inherit;">Wszystkie identyfikatory, liczby, kody operacyjne i pragmy nie uwzgl&#281;dniaj&#261; wielko&#347;ci liter i s&#261; t&#322;umaczone na wielkie litery. Identyfikatory nie mog&#261; by&#263; takie same jak prawid&#322;owe kody. Specjalny identyfikator &#8222;*&#8221; odnosi si&#281; do licznika programu (PC).<br>
+	<pre>
+  Przyk&#322;ady:
+    * = $100	    ....   Ustaw adres pocz&#261;tkowy (PC) na $100 .
+    LABEL1  LD R5   ....   Zdefiniuj LABEL1 z adresem instrukcji LD.
+         JUN LABEL2 ....   Przejd&#378; do adresu etykiety LABEL2.
+    STORE = $080    ....   Zdefiniuj 'PRZECHOWANIE' o warto&#347;ci $080 .
+    HERE = *	    ....   Zdefiniuj 'TUTAJ' z aktualnym adresem (PC).
+    HERE2	    ....   Zdefiniuj HERE2 z aktualnym adresem (PC).
+	</pre>
+ </td></tr>
+</tbody></table>
+<ul>
+  <li>Pragmy</li>
+</ul>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+  Pragmy zaczynaj&#261; si&#281; od kropki (.) I musz&#261; by&#263; jedynym wyra&#380;eniem w wierszu:<br>
+ <pre>
+    .BYTE BB 	.... 	Podaj 8-bitowy bajt przy aktualnym adresie do kodu..
+    .END 	.... 	Koniec &#378;ród&#322;a, zatrzymaj monta&#380;. (znak '$' to opcja)
+ </pre>
+ </td></tr>
+</tbody></table>
+<ul>
+  <li>Komentarze</li>
+</ul>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+<pre>
+  ; komentarz 	.... 	Dowolna sekwencja znaków zaczynaj&#261;ca si&#281; od &#347;rednika
+			do ko&#324;ca linii s&#261; ignorowane.
+</pre>
+ </td></tr>
+</tbody></table>
+<ul>
+  <li>Ogólne notatki</li>
+</ul>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+Asembler nie potrzebuje &#380;adnego specjalnego formatowania z nast&#281;puj&#261;cym wykluczeniem: 
+- mi&#281;dzy etykiet&#261; a opkodem i dowolnymi operandami musi by&#263; bia&#322;a spacja. <br>
+Dozwolona jest tylko jedna instrukcja na lini&#281;.
+ </td></tr>
+</tbody></table>
+<br><br>
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="title">Przyk&#322;ad kodu</td></tr></tbody></table>
+<table width="640" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td class="tekst2">
+Ten przyk&#322;adowy kod pochodzi z &#8222;MCS-4 Micro Computer Set&#8221; - Intel Corporation 1973. <br>
+Przyk&#322;ad wykonuje logiczn&#261; &#8222;i&#8221; funkcj&#281; na danych w dwóch 4-bitowych portach wej&#347;ciowych ROM i wy&#347;wietla wynik na porcie wyj&#347;ciowym RAM. Ten program pokazuje, jak i4004 uzyskuje dost&#281;p do swoich portów wyj&#347;ciowych i wej&#347;ciowych. Pokazuje równie&#380; kilka podstawowych instrukcji (np. natychmiastowe <!--obci&#261;&#380;enie-->za&#322;adowanie), podprogramy, skoki itp.
+</td></tr>
+</tbody></table>
+<br>
+<table width="600" cellspacing="0" cellpadding="5" border="1">
+ <tbody><tr><td class="code">
+ <pre>; czterobitowa procedura &#8222;AND&#8221; na Intel 4004
+;
+START	FIM 4P, 0	; &#322;ADUJ ROM PORT 0 ADRES
+	SRC 4P		; WY&#346;LIJ ADRES PORTU ROM
+	RDR		; CZYTAJ WEJ&#346;CIE A
+	XCH 0		; A DO REJESTRU 0
+	INC 8		; &#322;ADUJ ROM PORT 1 ADRES
+	SRC 4P		; WY&#346;LIJ ADRES PORTU ROM
+	RDR		; CZYTAJ WEJ&#346;CIE B
+	XCH 1		; B DO REJESTRU 1
+	JMS AND		; WYKONAJ "AND"
+	XCH 2		; WYNIK &#322;ADOWANIA C
+	WMP		; ZACHOWAJ W PORCIE PAMI&#280;CI 0
+	JUN START	; RESTART
+	NOP
+*=104
+;			'<span=title=PODROOTYNA>PODPROGRAM</span>' "AND"
+AND	CLB		; CZY&#346;&#262; AKUMULATOR I 'PRZENIESIENIE'
+	XCH 2		; CZY&#346;&#262; REJESTR 2
+	LDM 4		; &#322;ADUJ P&#280;TLA LICZ (LC)
+AND_3	XCH 0		; ZA&#322;ADUJ A, LC DO REJESTRU 0
+	RAR		; OBRÓ&#262; NAJMNIEJ ZNACZ&#260;CY BII DO PRZENIESIENIA
+	XCH 0		; POWRÓT OBRÓCONY A DO REG 0, LC DO ACC
+	JCN CZ, ROTR1	; SKOK DO ROTR1 JE&#346;LI PRZENIESIENIE ZERO
+	XCH 1		; ZA&#322;ADUJ B, LC DO AKUMULATORA
+	RAR		; OBRÓ&#262; NAJMNIEJ ZNACZ&#260;CY BIT DO PRZENIESIENIA
+	XCH 1		; POWRÓT OBRACANY B DO REG 1, LC DO ACC
+ROTR2	XCH 2		; ZA&#322;ADUJ REZULTAT CZ&#280;&#346;CIOWY C, LC DO REG 2
+	RAR		; OBRÓ&#262; PRZENIE&#346; DO CZ&#280;&#346;CIOWEGO REZULTATU MSB
+	XCH 2		; ZA&#322;ADUJ LC, POWRÓT C DO REJESTRU 2
+	DAC		; ZMNIEJSZENIE AKUMULATORA (LC)
+	JCN ANZ, AND_3	; <span title='LOOP IF LC NON ZERO'>P&#280;TLA JE&#379;ELI LC NIE ZERO</span>
+	BBL 0		; POWRÓT
+ROTR1	XCH 1		; ZA&#322;ADUJ B, LC DO REJESTRU 1
+	RAR		; OBRÓ&#262; B
+	XCH 1		; POWRÓT OBRACANY B DO REG 1, LC DO ACC
+	CLC		; CZY&#346;&#262; PRZENIESIENIE
+	JUN ROTR2	; POWRÓT DO P&#280;TLI
+CZ=10
+ANZ=12
+$
+ </pre>
+ </td></tr>
+</tbody></table>
+<br><br>
+
+<!--<div class="top" style="padding: 8px; float: left; width: 100%;">--><!--
+--><hr style="color: #CCC; background-color: #CCC; height: 1px; "><!--
+--><h1 class="title gray">Tekst oryginalny: http://e4004.szyc.org/</h1><!--
+	</div>--><!--
+--><div class="middle" style="padding: 8px;"><div class="original-text"></div><!--
+--><!--</div>--><!--
+--><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link"> t&#322;umaczenie pl</span><span class="activity-link"></span><!--
+--></div><!--
+--><div class="started-activity-container"><!--
+	--><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><!--
+	--><div class="activity-root"></div><!--
+--></div><!--</div>--><!--
+--><div class="status-message" style="display: none;"></div><!--</div>-->
+
+
+<!--</circle></svg></div></div>--></body></html>
