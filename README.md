@@ -24,7 +24,7 @@
 
 >  Rozwój w toku
 
-Kontynuacja prostego emulatora układu Intel 4004..
+Kontynuacja  emulatora układu Intel 4004..
 
 Do symulacji kalkulatora lub badań architektury komputera i urządzeń wbudowanych  z kilkoma instrukcjami (46 instrukcji) .
 
