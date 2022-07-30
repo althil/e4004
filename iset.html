@@ -430,7 +430,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>XCH (<span title='Zamiana rejestru indeksu i akumulatora '>Exchange index register and accumulator</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1011 DDDD</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; ACBR, (RRRR) --&gt; ACC, (ACBR) --&gt; RRRR</td></tr>
-		<tr valign="top"><td>Opis:</td><td>4-bitowa zawartość wyznaczonego rejestru indeksowego jest ładowana do akumulatora. Do zaprojektowanego rejestru ładowana jest wcze¶niejsza zawarto¶ć akumulatora. Nie ma to wpływu na bit przenoszenia/link.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4-bitowa zawartość wyznaczonego rejestru indeksowego jest ładowana do akumulatora. Do zaprojektowanego rejestru ładowana jest wcześniejsza zawartość akumulatora. Nie ma to wpływu na bit przenoszenia/link.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -439,7 +439,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>ADD (<span title='Dodanie rejestru indeksu do akumulatora z przeniesieniem'>Add index register to accumulator with carry</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1000 RRRR</td></tr>
 		<tr><td>Symbolic:</td><td>(RRRR) + (ACC) + (CY) --&gt; ACC, CY</td></tr>
-		<tr valign="top"><td>Opis:</td><td>4-bitowa zawartość wyznaczonego rejestru indeksowego jest dodawana do zawarto¶ci akumulatora z przeniesieniem. Wynik jest przechowywany w akumulatorze. Przeniesienie/link jest ustawiane na 1, je¶li wygenerowano sumę większ± niż 15 w celu wskazania wykonania; w przeciwnym razie przeniesienie/link jest ustawione na 0. 4-bitowa zawarto¶ć rejestru indeksu pozostaje niezmieniona.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4-bitowa zawartość wyznaczonego rejestru indeksowego jest dodawana do zawarto¶ci akumulatora z przeniesieniem. Wynik jest przechowywany w akumulatorze. Przeniesienie/link jest ustawiane na 1, je¶li wygenerowano sumę większą niż 15 w celu wskazania wykonania; w przeciwnym razie przeniesienie/link jest ustawione na 0. 4-bitowa zawartość rejestru indeksu pozostaje niezmieniona.</td></tr>
 		<tr valign="top"><td>Przykład:</td><td>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
 		<tbody><tr align="left"><td>&nbsp;</td><td>Augend</td><td colspan="3">&nbsp;</td><td>Addend</td></tr>
@@ -466,7 +466,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>SUB (<span title='Odejmij rejestr indeksu z akumulatora z pozyczka'>Subtract index register from accumulator with borrow</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1001 RRRR</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) + ~(RRRR) + (CY) --&gt; ACC, CY</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Czterobitowa zawartość wyznaczonego rejestru indeksowego jest uzupełniana (uzupełnianie jedynkowe) i dodawana do zawarto¶ci akumulatora pozyczka, a wynik jest przechowywany w akumulatorze. W przypadku wygenerowania pożyczki bit przeniesienia jest ustawiany na 0; w przeciwnym razie jest ustawiony na 1. 4-bitowa zawarto¶ć rejestru indeksu pozostaje niezmieniona.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Czterobitowa zawartość wyznaczonego rejestru indeksowego jest uzupełniana (uzupełnianie jedynkowe) i dodawana do zawartości akumulatora pozyczka, a wynik jest przechowywany w akumulatorze. W przypadku wygenerowania pożyczki bit przeniesienia jest ustawiany na 0; w przeciwnym razie jest ustawiony na 1. 4-bitowa zawartość rejestru indeksu pozostaje niezmieniona.</td></tr>
 		<tr valign="top"><td>Przykład:</td><td>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
 		<tbody><tr align="left"><td>&nbsp;</td><td>Minuend</td><td colspan="3">&nbsp;</td><td>Subtrahend</td></tr>
@@ -503,7 +503,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>BBL (<span title='Rozgalezienie zwrotne & zaladowanie danej do akumulatora'>Branch back and load data to the accumulator</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>0110 RRRR</td></tr>
 		<tr><td>Symbolic:</td><td>(Stack) --&gt; PL, PM, PH; DDDD --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Licznik programu (stos adresów) jest przesuwany o jeden poziom w dól. Sterowanie programem przechodzi do następnej instrukcji po ostatnim skoku do instrukcji podprogramu (JMS). 4 bity danych DDDD przechowywane w czę¶ci OPA instrukcji s± ładowane do akumulatora. <br> <br> BBL służy do powrotu z podprogramu do programu głównego.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Licznik programu (stos adresów) jest przesuwany o jeden poziom w dól. Sterowanie programem przechodzi do następnej instrukcji po ostatnim skoku do instrukcji podprogramu (JMS). 4 bity danych DDDD przechowywane w części OPA instrukcji s± ładowane do akumulatora. <br> <br> BBL służy do powrotu z podprogramu do programu głównego.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -512,8 +512,8 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>JIN (<span title='Skok posredni'>Jump indirect</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>0011 RRR1</td></tr>
 		<tr><td>Symbolic:</td><td>(RRRO) --&gt; PM<br>(RRR1) --&gt; PL; PH unchanged</td></tr>
-		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość wyznaczonej pary rejestrów indeksowych jest ładowana na najniższe pozycje 8 licznika programu. Sterowanie programem jest przekazywane do instrukcji pod tym adresem na tej samej stronie (tej samej pamięci ROM), na której znajduje się instrukcja JIN. 8-bitowa zawarto¶ć rejestru indeksu pozostaje nienaruszona.</td></tr>
-		<tr valign="top"><td>WYJˇTKI:</td><td>Kiedy JIN znajduje się pod adresem (PH) 1111 1111, sterowanie programem jest przesyłane do następnej strony w kolejno¶ci, a nie do tej samej strony, na której znajduje się instrukcja JIN. Oznacza to, że następny adres to (PH + 1) (RRRO) (RRR1), a nie (PH) (RRRO) (RRR1)</td></tr>
+		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość wyznaczonej pary rejestrów indeksowych jest ładowana na najniższe pozycje 8 licznika programu. Sterowanie programem jest przekazywane do instrukcji pod tym adresem na tej samej stronie (tej samej pamięci ROM), na której znajduje się instrukcja JIN. 8-bitowa zawartość rejestru indeksu pozostaje nienaruszona.</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>Kiedy JIN znajduje się pod adresem (PH) 1111 1111, sterowanie programem jest przesyłane do następnej strony w kolejności, a nie do tej samej strony, na której znajduje się instrukcja JIN. Oznacza to, że następny adres to (PH + 1) (RRRO) (RRR1), a nie (PH) (RRRO) (RRR1)</td></tr>
 	</tbody></table>
 	<br>
 
@@ -522,7 +522,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>SRC (<span title='Wyslij kontrole rejestru'>Send register control</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>0010 RRR1</td></tr>
 		<tr><td>Symbolic:</td><td>(RRRO) --&gt; DB	(X2)<br>(RRR1) --&gt; DB (X3)</td></tr>
-		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość wyznaczonej pary rejestrów indeksowych jest wysyłana do rejestru adresu RAM w X2 i X3. PóĽniejsza operacja odczytu, zapisu lub operacji we/wy pamięci RAM będzie wykorzystywać ten adres. W szczególno¶ci pierwsze 2 bity adresu oznaczaj± układ pamięci RAM; drugie 2 bity oznaczaj± 1 z 4 rejestrów w chipie; ostatnie 4 bity oznaczaj± 1 z 16 4-bitowych znaków pamięci głównej w rejestrze. Polecenie to jest równiez używane do wyznaczania pamięci ROM do póĽniejszej operacji portu we/wy ROM. Pierwsze 4 bity okre¶laj± numer chipa ROM, który ma zostać wybrany. Adres w pamięci ROM lub RAM nie jest usuwany do czasu wykonania następnej instrukcji SRC. 8-bitowa zawarto¶ć rejestru indeksu pozostaje nienaruszona.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość wyznaczonej pary rejestrów indeksowych jest wysyłana do rejestru adresu RAM w X2 i X3. Późniejsza operacja odczytu, zapisu lub operacji we/wy pamięci RAM będzie wykorzystywać ten adres. W szczególności pierwsze 2 bity adresu oznaczaj± układ pamięci RAM; drugie 2 bity oznaczają 1 z 4 rejestrów w chipie; ostatnie 4 bity oznaczaj± 1 z 16 4-bitowych znaków pamięci głównej w rejestrze. Polecenie to jest równiez używane do wyznaczania pamięci ROM do póĽniejszej operacji portu we/wy ROM. Pierwsze 4 bity określają numer chipa ROM, który ma zostać wybrany. Adres w pamięci ROM lub RAM nie jest usuwany do czasu wykonania następnej instrukcji SRC. 8-bitowa zawartość rejestru indeksu pozostaje nienaruszona.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -532,7 +532,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tr><td>OPR OPA:</td><td>0011 RRRO</td></tr>
 		<tr><td>Symbolic:</td><td>(PH) (0000) (0001) --&gt; ROM address<br>(OPR) --&gt; RRRO<br>(OPA) --&gt; RRR1</td></tr>
 		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość pary rejestrów indeksów 0 (0000) (0001) jest wysylana jako adres na tej samej stronie, na której znajduje sie instrukcja FIN. 8-bitowe slowo w tej lokalizacji jest ladowane do wyznaczonej pary rejestrów indeksowych. Nie ma to wplywu na licznik programu; po wykonaniu FIN, zaadresowana zostanie nastepna w kolejnosci instrukcja. Zawartosc pary rejestrów indeksów 0 pozostaje niezmieniona, chyba ze wyznaczono rejestr indeksów 0.</td></tr>
-		<tr valign="top"><td>WYJˇTKI:</td><td>a) Chociaż FIN jest instrukcj± skladającą się z jednego słowa, jej wykonanie wymaga dwóch cykli pamięci (21,6 psec). <br> <br> b) Gdy FIN znajduje się pod adresem (PH) 1111 1111 dane zostan± pobrane z następnej strony ( ROM) w kolejno¶ci, a nie z tej samej strony (ROM), na której znajduje się instrukcja FIN. Oznacza to, że następny adres to (PH + 1) (0000) (0001), a nie (PH) (0000) (0001).</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>a) Chociaż FIN jest instrukcj± skladającą się z jednego słowa, jej wykonanie wymaga dwóch cykli pamięci (21,6 psec). <br> <br> b) Gdy FIN znajduje się pod adresem (PH) 1111 1111 dane zostaną pobrane z następnej strony ( ROM) w kolejności, a nie z tej samej strony (ROM), na której znajduje się instrukcja FIN. Oznacza to, że następny adres to (PH + 1) (0000) (0001), a nie (PH) (0000) (0001).</td></tr>
 	</tbody></table>
 	</td></tr>
 </tbody></table>
@@ -596,8 +596,8 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tr><td>1st word OPR OPA:</td><td>0001	C1C2C3C4</td></tr>
 		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;A1 A1 A1 A1</td></tr>
 		<tr valign="top"><td>Symbolic:</td><td>If C1C2C3C4 is true, A2A2A2A2 --&gt; PM<br>A1A1A1A1 --&gt; PL, PH unchanged<br>if C1C2C3C4 is false,<br>(PH) --&gt; PH, (PM) --&gt; PM, (PL + 2) --&gt; PL</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Jeśli wyznaczony kod warunku jest prawdziwy, sterowanie programem jest przekazywane do instrukcji znajduj±cej się pod 8-bitowym adresem A2A2A2A2, A1A1A1A1 na tej samej stronie (ROM), na której znajduje się JCN. <br> Je¶li warunek nie jest prawdziwy, następna instrukcja w kolejno¶ci po wykonaniu JCN. <br> Bity warunku s± przypisywane w następuj±cy sposób: <br> C1 = 0 Nie odwracaj warunku skoku <br> C1 = 1 Odwróć warunek skoku <br> C2 = 1 Skocz, je¶li zawarto¶ć akumulatora wynosi zero < br> C3 = 1 Skocz, je¶li zawarto¶ć przenoszenia/link wynosi 1 <br> C4 = 1 Skocz, je¶li sygnał testowy (styk 10 na 4004) ma warto¶ć zero.</td></tr>
-		<tr valign="top"><td>Przykład:</td><td>OPR&nbsp;&nbsp;&nbsp;&nbsp;OPA<br>------&nbsp;&nbsp;&nbsp;&nbsp;------<br>0001&nbsp;&nbsp;&nbsp;&nbsp;0110&nbsp;&nbsp;Skocz, je¶li akumulator ma warto¶ć zero lub przeniesienie = 1 <br> <br> <br> Kilka warunków można przetestować jednoczesnie. <br> <br> Równanie logiczne opisuj±ce warunek skoku jest podane poniżej:<br><br>JUMP = ~C1 . ((ACC = 0) . C2 + (CY = 1) . C3 +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~TEST . C4) + C1 . ~((ACC = 0) . C2 +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(CY = 1) . C3 + ~TEST . C4)</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Jeśli wyznaczony kod warunku jest prawdziwy, sterowanie programem jest przekazywane do instrukcji znajduj±cej się pod 8-bitowym adresem A2A2A2A2, A1A1A1A1 na tej samej stronie (ROM), na której znajduje się JCN. <br> Je¶li warunek nie jest prawdziwy, następna instrukcja w kolejno¶ci po wykonaniu JCN. <br> Bity warunku s± przypisywane w następuj±cy sposób: <br> C1 = 0 Nie odwracaj warunku skoku <br> C1 = 1 Odwróć warunek skoku <br> C2 = 1 Skocz, jeśli zawartość akumulatora wynosi zero < br> C3 = 1 Skocz, jeśli zawartość przenoszenia/link wynosi 1 <br> C4 = 1 Skocz, jeśli sygnał testowy (styk 10 na 4004) ma wartość zero.</td></tr>
+		<tr valign="top"><td>Przykład:</td><td>OPR&nbsp;&nbsp;&nbsp;&nbsp;OPA<br>------&nbsp;&nbsp;&nbsp;&nbsp;------<br>0001&nbsp;&nbsp;&nbsp;&nbsp;0110&nbsp;&nbsp;Skocz, jeśli akumulator ma wartość zero lub przeniesienie = 1 <br> <br> <br> Kilka warunków można przetestować jednoczesnie. <br> <br> Równanie logiczne opisujące warunek skoku jest podane poniżej:<br><br>JUMP = ~C1 . ((ACC = 0) . C2 + (CY = 1) . C3 +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~TEST . C4) + C1 . ~((ACC = 0) . C2 +<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(CY = 1) . C3 + ~TEST . C4)</td></tr>
 		<tr valign="top"><td>WYJˇTKI:</td><td>Jeśli JCN znajduje się na słowach 254 i 255 na stronie ROM, gdy JCN jest wykonywany i warunek jest prawdziwy, sterowanie programem jest przesyłane do 8-bitowego adresu na następnej stronie, na której znajduje się JCN.</td></tr>
 	</tbody></table>
 	<br>
@@ -608,8 +608,8 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tr><td>1st word OPR OPA:</td><td>0111	RRRR</td></tr>
 		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;A1 A1 A1 A1</td></tr>
 		<tr valign="top"><td>Symbolic:</td><td>(RRRR) + 1 --&gt; RRRR, if result = 0<br>(PH) --&gt; PH, (PM) --&gt; PM, (PL + 2) --&gt; PL:<br>if result &lt;&gt; 0&nbsp;&nbsp;(PH) --&gt; PH,<br>A2A2A2A2 --&gt; PM, A1A1A1A1 --&gt; PL</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość wyznaczonego rejestru indeksowego jest zwiększana o 1. Akumulator i przeniesienie/link pozostaj± niezmienione. Je¶li wynikiem jest zero, wykonywana jest następna instrukcja po ISZ. Jeżeli wynik jest różny od 0, sterowanie programem jest przekazywane do instrukcji znajduj±cej się pod 8-bitowym adresem A2A2A2A2, A1A1A1A1 na tej samej stronie (ROM), na której znajduje się instrukcja ISZ.</td></tr>
-		<tr valign="top"><td>WYJˇTKI:</td><td>Jeśli ISZ znajduje się na słowach 254 i 255 strony ROM, gdy ISZ jest wykonywany i wynik nie jest zerowy, sterowanie programem jest przesyłane do 8-bitowego adresu znajduj±cego się na następnej stronie w kolejno¶ci, a nie na tej samej stronie, na której znajduje się ISZ jest zlokalizowany.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość wyznaczonego rejestru indeksowego jest zwiększana o 1. Akumulator i przeniesienie/link pozostaj± niezmienione. Jeśli wynikiem jest zero, wykonywana jest następna instrukcja po ISZ. Jeżeli wynik jest różny od 0, sterowanie programem jest przekazywane do instrukcji znajdującej się pod 8-bitowym adresem A2A2A2A2, A1A1A1A1 na tej samej stronie (ROM), na której znajduje się instrukcja ISZ.</td></tr>
+		<tr valign="top"><td>WYJˇTKI:</td><td>Jeśli ISZ znajduje się na słowach 254 i 255 strony ROM, gdy ISZ jest wykonywany i wynik nie jest zerowy, sterowanie programem jest przesyłane do 8-bitowego adresu znajdującego się na następnej stronie w kolejności, a nie na tej samej stronie, na której znajduje się ISZ jest zlokalizowany.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -626,7 +626,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 <br><br>
 <table border="0" cellpadding="0" cellspacing="0" width="500">
 	<tbody><tr align="left"><td>Instrukcje Wej&#347;cia/Wyj&#347;cia i pami&#281;ci RAM</td></tr>
-	<tr align="left"><td class="tekst">(Pamięci RAM i ROM obsługiwane w instrukcjach I/O i RAM zostały <br> wcze¶niej wybrane przez ostatni± wykonan± instrukcje SRC.)</td></tr>
+	<tr align="left"><td class="tekst">(Pamięci RAM i ROM obsługiwane w instrukcjach I/O i RAM zostały <br> wcześniej wybrane przez ostatnią wykonaną instrukcje SRC.)</td></tr>
 	<tr align="left"><td><br>
 
     <a id=rdm ></a>
@@ -676,8 +676,8 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>RDR (<span title='Przeczytaj port ROM.'>Read ROM port</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1110 1010</td></tr>
 		<tr><td>Symbolic:</td><td>(ROM input lines) --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Dane obecne na liniach wejściowych wybranego wcześniej układu ROM są przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link. Je¶li opcja I/O ma zarówno wej¶cia, jak i wyj¶cia w tych samych 4 liniach I/O, użytkownik może wybrać opcje "0" lub "1" przeniesiona do akumulatora dla tych pinów I/O zakodowanych jako wyj¶cia, gdy Wykonywana jest instrukcja RDR.</td></tr>
-		<tr valign="top"><td>PRZYKŁAD:</td><td>Bior±c pod uwagę 4001 z kodowaniem I/O z 2 wejściami i 2 wyjściami, kiedy RDR jest wykonywany, transfer jest taki, jak pokazano poniżej:<br><br>I3 O2 O1 I0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ACC)<br>1&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;--&gt;&nbsp;&nbsp;1 (1 or 0) (1 or 0) 0<br>&nbsp;<span title="Dane wej¶ciowe">Dane Wej¶c.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="Użytkownik może wybrać">Użyt. może wybrać</span></td></tr>
+		<tr valign="top"><td>Opis:</td><td>Dane obecne na liniach wejściowych wybranego wcześniej układu ROM są przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link. Jeśli opcja I/O ma zarówno wejścia, jak i wyj¶cia w tych samych 4 liniach I/O, użytkownik może wybrać opcje "0" lub "1" przeniesiona do akumulatora dla tych pinów I/O zakodowanych jako wyjścia, gdy Wykonywana jest instrukcja RDR.</td></tr>
+		<tr valign="top"><td>PRZYKŁAD:</td><td>Bior±c pod uwagę 4001 z kodowaniem I/O z 2 wejściami i 2 wyjściami, kiedy RDR jest wykonywany, transfer jest taki, jak pokazano poniżej:<br><br>I3 O2 O1 I0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ACC)<br>1&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;--&gt;&nbsp;&nbsp;1 (1 or 0) (1 or 0) 0<br>&nbsp;<span title="Dane wejściowe">Dane Wejśc.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="Użytkownik może wybrać">Użyt. może wybrać</span></td></tr>
 	</tbody></table>
 	<br>
 
@@ -695,7 +695,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>WRO (<span title='Zapisz akumulator do znaku stanu pamieci RAM 0'>Write accumulator into RAM status character 0</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1110 0100</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; MS0</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest zapisywana w znaku stanu 0 pamięci RAM wcze¶niej wybranego rejestru RAM. Akumulator i przeniesienie/link pozostaja nienaruszone.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest zapisywana w znaku stanu 0 pamięci RAM wcześniej wybranego rejestru RAM. Akumulator i przeniesienie/link pozostaja nienaruszone.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -728,7 +728,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>WRR (<span title='Pisz port ROM.'>Write ROM port</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1110 0010</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; ROM output lines</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest przenoszona do portu wyjściowego ROM wybranego wcze¶niej układu ROM. Dane s± dostępne na pinach wyj¶ciowych, dopóki nowy WRR nie zostanie wykonany na tym samym chipie. Tre¶ć ACC i przeniesienie/link pozostaja nienaruszone. (Bit LSB akumulatora pojawia się na I/O 0, styk 16, 4001). Żadna operacja nie jest wykonywana na liniach I/O zakodowanych jako wej¶cia.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest przenoszona do portu wyjściowego ROM wybranego wcześniej układu ROM. Dane s± dostępne na pinach wyjściowych, dopóki nowy WRR nie zostanie wykonany na tym samym chipie. Treść ACC i przeniesienie/link pozostaja nienaruszone. (Bit LSB akumulatora pojawia się na I/O 0, styk 16, 4001). Żadna operacja nie jest wykonywana na liniach I/O zakodowanych jako wejścia.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -737,7 +737,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>WMP (<span title='Napisz port pamieci'>Write memory port</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1110 0001</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; RAM output register</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest przenoszona do portu wyjściowego RAM wcze¶niej wybranego układu RAM. Dane s± dostępne na pinach wyj¶ciowych, dopóki nowy WMP nie zostanie wykonany na tym samym układzie RAM. Nie ma to wpływu na zawarto¶ć ACC i przeniesienie/link. (Bit LSB akumultora pojawia się na O0, Pin 16 w 4002.)</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest przenoszona do portu wyjściowego RAM wcześniej wybranego układu RAM. Dane są dostępne na pinach wyjściowych, dopóki nowy WMP nie zostanie wykonany na tym samym układzie RAM. Nie ma to wpływu na zawartość ACC i przeniesienie/link. (Bit LSB akumultora pojawia się na O0, Pin 16 w 4002.)</td></tr>
 	</tbody></table>
 	<br>
 
@@ -860,7 +860,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>DAA (<span title='Akumulator regulacji dziesietnej'>Decimal adjust accumulator</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 1011</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) + (0000 or 0110) --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Akumulator jest zwiększany o 6, jeśli albo przeniesienie/link ma wartość 1 lub je¶li zawarto¶ć akumulatora jest większa niż 9. <br> Przeniesienie/link jest ustawione na 1, je¶li wynik generuje przeniesienie, w przeciwnym razie nie ma to wpływu.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Akumulator jest zwiększany o 6, jeśli albo przeniesienie/link ma wartość 1 lub jeśli zawartość akumulatora jest większa niż 9. <br> Przeniesienie/link jest ustawione na 1, jeśli wynik generuje przeniesienie, w przeciwnym razie nie ma to wpływu.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -869,7 +869,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>TCS (<span title='Transfer przeniesienia odejmowania'>Transfer carry subtract</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 1001</td></tr>
 		<tr><td>Symbolic:</td><td>1001 --&gt; ACC if (CY) = 0<br>1010 --&gt; ACC if (CY) = 1<br>0 --&gt; CY</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Akumulator jest ustawiony na 9, jeśli przeniesienie/kink ma wartość 0. <br> Akumulator jest ustawiony na 10, je¶li przeniesienie/link to 1. <br> Przeniesienie/link jest ustawione na 0.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Akumulator jest ustawiony na 9, jeśli przeniesienie/kink ma wartość 0. <br> Akumulator jest ustawiony na 10, jeśli przeniesienie/link to 1. <br> Przeniesienie/link jest ustawione na 0.</td></tr>
 	</tbody></table>
 	<br>
 	
@@ -878,7 +878,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>KBP (<span title='Proces klawiatury'>Keyboard process</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 1100</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; KBP, ROM --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Konwersja kodu jest wykonywana na zawartości akumulatora, z 1 z n na kod binarny. Je¶li zawarto¶ć akumulatora ma więcej niż jeden bit, akumulator zostanie ustawiony na 15 (aby wskazać bł±d). Nie ma to wpływu na przeniesienie/link. <br> Tabela konwersji jest pokazana poniżej:<br><br>
+		<tr valign="top"><td>Opis:</td><td>Konwersja kodu jest wykonywana na zawartości akumulatora, z 1 z n na kod binarny. Jeśli zawartość akumulatora ma więcej niż jeden bit, akumulator zostanie ustawiony na 15 (aby wskazać bł±d). Nie ma to wpływu na przeniesienie/link. <br> Tabela konwersji jest pokazana poniżej:<br><br>
 		<center><table border="0" cellpadding="0" cellspacing="0" width="90%" class="tekst">
 		<tbody><tr align="center"><td>(ACC) przed KBP</td><td>&nbsp;<br>&nbsp;</td><td>(ACC) <span title='after'>po</span> KBP</td>
 		</tr><tr align="center"><td>0000</td><td>----&gt;</td><td>0000</td>
@@ -906,7 +906,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>DCL (<span title='Wyznaczenie linii komendy'>Designate command line</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 1101</td></tr>
 		<tr><td>Symbolic:</td><td>a0 --&gt; CM0, a1 --&gt; CM1, a2 --&gt; CM2</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość trzech najmniej znaczących bitów akumulatora jest przesyłana do rejestru sterowania komendami w CPU. Ta instrukcja zapewnia wybór banku RAM, gdy używanych jest wiele banków RAM (je¶li nie jest wysyłana żadna instrukcja DCL, numer zerowego banku RAM jest wybierany automatycznie po zastosowaniu co najmniej jednego RESETU). DCL pozostaje zablokowany, dopóki nie zostanie zmieniony.<br>
+		<tr valign="top"><td>Opis:</td><td>Zawartość trzech najmniej znaczących bitów akumulatora jest przesyłana do rejestru sterowania komendami w CPU. Ta instrukcja zapewnia wybór banku RAM, gdy używanych jest wiele banków RAM (jeśli nie jest wysyłana żadna instrukcja DCL, numer zerowego banku RAM jest wybierany automatycznie po zastosowaniu co najmniej jednego RESETU). DCL pozostaje zablokowany, dopóki nie zostanie zmieniony.<br>
 		<br>Wyboru dokonuje sie zgodnie z poniższą tabelą prawdy.<br>
 		<center><table border="0" cellpadding="0" cellspacing="0" width="90%" class="tekst">
 		<tbody><tr align="left"><td>(ACC)</td><td>CM-RAMi Enabled</td><td>Bank No.</td>
