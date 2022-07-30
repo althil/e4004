@@ -1,4 +1,3 @@
-
 <!-- saved from url=(0048)file:///D:/ / /MCS-4/emu/iset.html -->
 <html><head><!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">--><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
 <title>Intel 4004 Instructions Set</title>
@@ -218,7 +217,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="500">
 	<tbody><tr align="left"><td>Instruction Format</td></tr>
-	<tr align="left"><td class="tekst"><br>Zestaw mikrokomputerów MCS-4 ma dwa typy instrukcji: <br>a) Instrukcja zawieraj±ca 1 słowo z kodem 8-bitowym i czasem wykonania 10,8 ůsek. <br> b) Instrukcja zawieraj±ca 2 słowa z kodem 16-bitowym i czas wykonania 21,6 ůsec. <br> <br> Ze wzgledu na multipleksowane czasowo działanie systemu, instrukcja 8-bitowa jest pobierana po 4 bity na raz w dwóch kolejnych okresach zegara. <br> <br> Formaty instrukcji przedstawiono w tabelach I i II. <br> <br> Tabela I</td></tr>
+	<tr align="left"><td class="tekst"><br>Zestaw mikrokomputerów MCS-4 ma dwa typy instrukcji: <br>a) Instrukcja zawierająca 1 słowo z kodem 8-bitowym i czasem wykonania 10,8 ůsek. <br> b) Instrukcja zawierająca 2 słowa z kodem 16-bitowym i czas wykonania 21,6 ůsec. <br> <br> Ze wzgledu na multipleksowane czasowo działanie systemu, instrukcja 8-bitowa jest pobierana po 4 bity na raz w dwóch kolejnych okresach zegara. <br> <br> Formaty instrukcji przedstawiono w tabelach I i II. <br> <br> Tabela I</td></tr>
 	<tr align="center"><td><table border="0" cellpadding="0" cellspacing="0" width="350" class="tekst">
 		<tbody><tr align="center"><td>INSTRUKCJA JEDNEGO SLOWA</td></tr>
 
@@ -412,7 +411,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>LDM (<span title='Zaladowanie danej do akumulatora'>Load data to Accumulator</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1101 DDDD</td></tr>
 		<tr><td>Symbolic:</td><td>DDDD --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>4 bity danych DDDD przechowywane w polu OPA słowa inicjujacego s± ładowane do akumulatora. Poprzednia zawartość akumulatora zostanie utracona. Nie ma to wpływu na bit przenoszenia/link.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4 bity danych DDDD przechowywane w polu OPA słowa inicjujacego są ładowane do akumulatora. Poprzednia zawartość akumulatora zostanie utracona. Nie ma to wpływu na bit przenoszenia/link.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -503,7 +502,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>BBL (<span title='Rozgalezienie zwrotne & zaladowanie danej do akumulatora'>Branch back and load data to the accumulator</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>0110 RRRR</td></tr>
 		<tr><td>Symbolic:</td><td>(Stack) --&gt; PL, PM, PH; DDDD --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Licznik programu (stos adresów) jest przesuwany o jeden poziom w dól. Sterowanie programem przechodzi do następnej instrukcji po ostatnim skoku do instrukcji podprogramu (JMS). 4 bity danych DDDD przechowywane w części OPA instrukcji s± ładowane do akumulatora. <br> <br> BBL służy do powrotu z podprogramu do programu głównego.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Licznik programu (stos adresów) jest przesuwany o jeden poziom w dól. Sterowanie programem przechodzi do następnej instrukcji po ostatnim skoku do instrukcji podprogramu (JMS). 4 bity danych DDDD przechowywane w części OPA instrukcji są ładowane do akumulatora. <br> <br> BBL służy do powrotu z podprogramu do programu głównego.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -522,7 +521,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>SRC (<span title='Wyslij kontrole rejestru'>Send register control</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>0010 RRR1</td></tr>
 		<tr><td>Symbolic:</td><td>(RRRO) --&gt; DB	(X2)<br>(RRR1) --&gt; DB (X3)</td></tr>
-		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość wyznaczonej pary rejestrów indeksowych jest wysyłana do rejestru adresu RAM w X2 i X3. Późniejsza operacja odczytu, zapisu lub operacji we/wy pamięci RAM będzie wykorzystywać ten adres. W szczególności pierwsze 2 bity adresu oznaczają układ pamięci RAM; drugie 2 bity oznaczają 1 z 4 rejestrów w chipie; ostatnie 4 bity oznaczaj± 1 z 16 4-bitowych znaków pamięci głównej w rejestrze. Polecenie to jest równiez używane do wyznaczania pamięci ROM do późniejszej operacji portu we/wy ROM. Pierwsze 4 bity określają numer chipa ROM, który ma zostać wybrany. Adres w pamięci ROM lub RAM nie jest usuwany do czasu wykonania następnej instrukcji SRC. 8-bitowa zawartość rejestru indeksu pozostaje nienaruszona.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>8-bitowa zawartość wyznaczonej pary rejestrów indeksowych jest wysyłana do rejestru adresu RAM w X2 i X3. Późniejsza operacja odczytu, zapisu lub operacji we/wy pamięci RAM będzie wykorzystywać ten adres. W szczególności pierwsze 2 bity adresu oznaczają układ pamięci RAM; drugie 2 bity oznaczają 1 z 4 rejestrów w chipie; ostatnie 4 bity oznaczają 1 z 16 4-bitowych znaków pamięci głównej w rejestrze. Polecenie to jest równiez używane do wyznaczania pamięci ROM do późniejszej operacji portu we/wy ROM. Pierwsze 4 bity określają numer chipa ROM, który ma zostać wybrany. Adres w pamięci ROM lub RAM nie jest usuwany do czasu wykonania następnej instrukcji SRC. 8-bitowa zawartość rejestru indeksu pozostaje nienaruszona.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -557,7 +556,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tr><td>1st word OPR OPA:</td><td>0101 A3 A3 A3 A3</td></tr>
 		<tr><td>2nd word OPR OPA:</td><td>A2 A2 A2 A2&nbsp;&nbsp;A1 A1 A1 A1</td></tr>
 		<tr valign="top"><td>Symbolic:</td><td>Al Al Al Al --&gt; PL,<br>A2 A2 A2 A2 --&gt; PM,<br>A3 A3 A3 A3 --&gt; PH</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Adres następnej instrukcji w kolejności po JMS (adres zwrotny) jest zapisywany na stosie push down. Sterowanie programem przekazywane jest do instrukcji umieszczonej pod adresem 12-bitowym (A3A3A3A3A2A2A2A2A1A1A1A1). Wykonanie instrukcji powrotu (BBL) spowoduje wyci±gnięcie zapisanego adresu ze stosu, dlatego kontrola programu jest przenoszona do następnej instrukcji sekwencyjnej po ostatnim JMS. <br> <br> Stos przesuwany ma 4 rejestry . Jeden z nich jest używany jako licznik programu, dlatego zagnieżdżanie JMS może mieć maksymalnie 3 poziomy.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Adres następnej instrukcji w kolejności po JMS (adres zwrotny) jest zapisywany na stosie push down. Sterowanie programem przekazywane jest do instrukcji umieszczonej pod adresem 12-bitowym (A3A3A3A3A2A2A2A2A1A1A1A1). Wykonanie instrukcji powrotu (BBL) spowoduje wyciągnięcie zapisanego adresu ze stosu, dlatego kontrola programu jest przenoszona do następnej instrukcji sekwencyjnej po ostatnim JMS. <br> <br> Stos przesuwany ma 4 rejestry . Jeden z nich jest używany jako licznik programu, dlatego zagnieżdżanie JMS może mieć maksymalnie 3 poziomy.</td></tr>
 		<tr valign="top"><td>PRZYKŁAD:</td><td>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tekst">
 		<tbody><tr align="center"><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td><td>Stack</td><td>&nbsp;</td></tr>
@@ -619,7 +618,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tr><td>1st word OPR OPA:</td><td>0010	RRR0</td></tr>
 		<tr><td>2nd word OPR OPA:</td><td>D2 D2 D2 D2&nbsp;&nbsp;D1 D1 D1 D1</td></tr>
 		<tr valign="top"><td>Symbolic:</td><td>D2D2D2D2 --&gt; RRR0, D1D1D1D1 --&gt; RRR1</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Drugie słowo reprezentuje 8-bitowe dane, które s± ładowane do wyznaczonej pary rejestrów indeksowych.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Drugie słowo reprezentuje 8-bitowe dane, które są ładowane do wyznaczonej pary rejestrów indeksowych.</td></tr>
 	</tbody></table>
 	</td></tr>
 </tbody></table>
@@ -643,7 +642,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>RD0 (<span title='Odczytanie znaku stanu pamieci RAM 0'>Read RAM status character 0</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1110 1100</td></tr>
 		<tr><td>Symbolic:</td><td>(MS0) --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>4 bity znaku statusu 0 dla wcześniej wybranego rejestru RAM s± przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link i znak statusu.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>4 bity znaku statusu 0 dla wcześniej wybranego rejestru RAM są przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link i znak statusu.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -677,7 +676,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tr><td>OPR OPA:</td><td>1110 1010</td></tr>
 		<tr><td>Symbolic:</td><td>(ROM input lines) --&gt; ACC</td></tr>
 		<tr valign="top"><td>Opis:</td><td>Dane obecne na liniach wejściowych wybranego wcześniej układu ROM są przesyłane do akumulatora. Nie ma to wpływu na przeniesienie/link. Jeśli opcja I/O ma zarówno wejścia, jak i wyjścia w tych samych 4 liniach I/O, użytkownik może wybrać opcje "0" lub "1" przeniesiona do akumulatora dla tych pinów I/O zakodowanych jako wyjścia, gdy Wykonywana jest instrukcja RDR.</td></tr>
-		<tr valign="top"><td>PRZYKŁAD:</td><td>Bior±c pod uwagę 4001 z kodowaniem I/O z 2 wejściami i 2 wyjściami, kiedy RDR jest wykonywany, transfer jest taki, jak pokazano poniżej:<br><br>I3 O2 O1 I0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ACC)<br>1&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;--&gt;&nbsp;&nbsp;1 (1 or 0) (1 or 0) 0<br>&nbsp;<span title="Dane wejściowe">Dane Wejśc.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="Użytkownik może wybrać">Użyt. może wybrać</span></td></tr>
+		<tr valign="top"><td>PRZYKŁAD:</td><td>Biorąc pod uwagę 4001 z kodowaniem I/O z 2 wejściami i 2 wyjściami, kiedy RDR jest wykonywany, transfer jest taki, jak pokazano poniżej:<br><br>I3 O2 O1 I0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ACC)<br>1&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;--&gt;&nbsp;&nbsp;1 (1 or 0) (1 or 0) 0<br>&nbsp;<span title="Dane wejściowe">Dane Wejśc.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="Użytkownik może wybrać">Użyt. może wybrać</span></td></tr>
 	</tbody></table>
 	<br>
 
@@ -728,7 +727,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>WRR (<span title='Pisz port ROM.'>Write ROM port</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1110 0010</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; ROM output lines</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest przenoszona do portu wyjściowego ROM wybranego wcześniej układu ROM. Dane s± dostępne na pinach wyjściowych, dopóki nowy WRR nie zostanie wykonany na tym samym chipie. Treść ACC i przeniesienie/link pozostaja nienaruszone. (Bit LSB akumulatora pojawia się na I/O 0, styk 16, 4001). Żadna operacja nie jest wykonywana na liniach I/O zakodowanych jako wejścia.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora jest przenoszona do portu wyjściowego ROM wybranego wcześniej układu ROM. Dane są dostępne na pinach wyjściowych, dopóki nowy WRR nie zostanie wykonany na tym samym chipie. Treść ACC i przeniesienie/link pozostaja nienaruszone. (Bit LSB akumulatora pojawia się na I/O 0, styk 16, 4001). Żadna operacja nie jest wykonywana na liniach I/O zakodowanych jako wejścia.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -833,7 +832,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>RAL (<span title='Obrót w lewo'>Rotate left</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 0101</td></tr>
 		<tr><td>Symbolic:</td><td>C0 --&gt; a0, a(i) --&gt; a(i+1), a3 --&gt;CY</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora i przeniesienia/link s± obracane w lewo.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora i przeniesienia/link są obracane w lewo.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -842,7 +841,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>RAR (<span title='Obróc w prawo'>Rotate right</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 0110</td></tr>
 		<tr><td>Symbolic:</td><td>a0 --&gt; CY, a(i) --&gt; a(i-1), C0 --&gt;a3</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora i przeniesienia/link s± obracane w prawo.</td></tr>
+		<tr valign="top"><td>Opis:</td><td>Zawartość akumulatora i przeniesienia/link są obracane w prawo.</td></tr>
 	</tbody></table>
 	<br>
 
@@ -878,7 +877,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 		<tbody><tr><td width="20%">Mnemonic:</td><td>KBP (<span title='Proces klawiatury'>Keyboard process</span>)</td></tr>
 		<tr><td>OPR OPA:</td><td>1111 1100</td></tr>
 		<tr><td>Symbolic:</td><td>(ACC) --&gt; KBP, ROM --&gt; ACC</td></tr>
-		<tr valign="top"><td>Opis:</td><td>Konwersja kodu jest wykonywana na zawartości akumulatora, z 1 z n na kod binarny. Jeśli zawartość akumulatora ma więcej niż jeden bit, akumulator zostanie ustawiony na 15 (aby wskazać bł±d). Nie ma to wpływu na przeniesienie/link. <br> Tabela konwersji jest pokazana poniżej:<br><br>
+		<tr valign="top"><td>Opis:</td><td>Konwersja kodu jest wykonywana na zawartości akumulatora, z 1 z n na kod binarny. Jeśli zawartość akumulatora ma więcej niż jeden bit, akumulator zostanie ustawiony na 15 (aby wskazać błąd). Nie ma to wpływu na przeniesienie/link. <br> Tabela konwersji jest pokazana poniżej:<br><br>
 		<center><table border="0" cellpadding="0" cellspacing="0" width="90%" class="tekst">
 		<tbody><tr align="center"><td>(ACC) przed KBP</td><td>&nbsp;<br>&nbsp;</td><td>(ACC) <span title='after'>po</span> KBP</td>
 		</tr><tr align="center"><td>0000</td><td>----&gt;</td><td>0000</td>
