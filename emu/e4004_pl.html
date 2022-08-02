@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<!-- saved from url=(0049)file:///D:/ / /MCS-4/emu/index.html -->
+<!-- saved from url=(0049)file:///D:/ /emulators/4004/MCS-4/emu/index.html -->
 <html class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>e4004</title><!--
 		
@@ -36,9 +36,9 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 				 </h3>
 				<div id="ram_0" class="box ram">
 					<table id="memory_0" class="memory">
-						<tbody><tr><th style="width: 100px;"></th><th colspan="17">PAMIĘĆ GŁÓWNA</th></tr>
+						<tbody><tr><th style="width: 100px;"></th><th colspan="17" title="MAIN MEMORY">PAMIĘĆ GŁÓWNA</th></tr>
 						<tr><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
-						<tr><th class="left">REJESTR 0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+						<tr><th class="left" title="REGISTER">REJESTR 0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 						<tr><th class="left">REJESTR 1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 						<tr><th class="left">REJESTR 2</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 						<tr><th class="left">REJESTR 3</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>				
@@ -56,7 +56,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 					</tbody></table>
 					
 					<br style="clear: both;">
-					<h3>WYJŚCIA:</h3>
+					<h3 title="OUTPUTS">WYJŚCIA:</h3>
 					<table id="outputs_0" class="outputs">
 						<tbody><tr><th class="left">Q0</th><th class="left">Q1</th><th class="left">Q2</th><th class="left">Q3</th></tr>
 						<tr><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td></tr>
@@ -64,7 +64,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 					<input type="button" value="NASTAWIĆ" name="reset" class="reset">--><!-- onclick="_resetRam" --><!-- <input type="button" value="RESET" name="reset" class="reset" id="resetRAM"> --><!--
 					<input type="button" value="RESET" name="reset" class="reset" id="resetRam1">-->
 					<!--<input type="button" value="RESET" onclick="resetRam0();" name="reset" class="reset" style="width:90px;" title="cała RAM"> -->
-					<input type="button" value="RESET" id="resetRam1" name="reset" class="reset" style="width:90px;">
+					<input type="button" value="RESET" id="resetRam1" name="reset" class="reset" onclick=setRam(what) style="width:90px;">
 					<!--<input type="button" value="RESET" name="reset" class="reset" style="width:90px;">-->
 				</div>
 				
@@ -115,49 +115,73 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 					<input type="button" value="RESET" name="reset" class="reset" style="width:90px;" title='brak'>
 				</div>
 				
-				<h3>4001 ROM:</h3>
+				<h3>4001 ROM:
+				
+					<input type="file" id="fileLoader" onchange="loadFile(); return false;" title="Load from disk..." style="margin: 2px 0 5px ; width: 80px; "> 
+				
+				</h3> <!-- margin: 11px 0 0 13px; vertical-align: middle; color: #0; background-color: #333; -->
 				<div id="io" class="box" ><!--style="padding-top: 2px;"-->
 					<b style="margin-left:1.5em;">PORT <span title=WE/WY>I/O</span>:</b>
 					<table id="port" class="port" style="margin-left: 120px; margin-top: -10px">
+						<!-- 120px; margin-top: -10px -->
 						<!-- style="float: center; margin: 15px 0 5px 20px;" -->
 						<tbody>
 						<tr><th class="left" >Q0</th><th class="left">Q1</th><th class="left">Q2</th><th class="left" >Q3</th></tr>
 						<tr><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td><td><input type="radio" disabled="disabled"></td></tr>
 					</tbody></table>
-					<!-- dodane -->
-					<table>
-						<!-- --><form style="width: 700px; text-align: left;" name="ass" onsubmit="return false"><!-- -->
-						<textarea name="srcfield" rows="4" cols="56" wrap="virtual" style="width: 94%; margin: -5px 0 0 10px; background-color: #000; color: lightgray; overflow-y:"></textarea>
-						<!-- top,r,b,l - 30%
-						<textarea name="codefield" class="formField" rows="2" cols="10" wrap="virtual" style="width: 54%; float: right; margin: 0 1em 0 0;color: #fff" readonly=""></textarea>-->
+					<!-- dodane | style="margin-bottom: 5px; padding-bottom: 5px;"-->
+					<table><tbody> <!-- - - - - - - - - - - - - - - - - - - - - - -->				
+						<form style="width: 700px; text-align: left;" name="ass" onsubmit="return false">
+						<textarea id="mem" name="srcfield" rows="4" cols="56" wrap="virtual" style="width: 94%; margin: -5px 0 0 10px; background-color: #000; color: lightgray; overflow-y:" title="paste assembler source here or click button above to open file .txt " placeholder="tutaj wklejanie kodu lub załadowanie z pliku .txt "></textarea> 
+						<!-- top,r,b,l - 30% , dodane id="mem"
+						<textarea name="codefield" class="formField" rows="2" cols="10" wrap="virtual" style="width: 54%; float: right; margin: 0 1em 0 0;color: #fff" readonly="" title="wklej tu kod asemblera lub otwórz .txt" placeholder="wklej tu kod"></textarea>-->					
 						
 						<br style="clear: both;">
-						<textarea name="listing" class="formField" rows="4" cols="34" wrap="virtual" style="width: 46%; float: left; margin: 0 0 0 10px; background-color: #000; color: silver;" readonly="">listing</textarea><!-- 29% , margin: -10.9em 10.6em;
+						<textarea name="listing" class="formField" rows="3" cols="34" wrap="virtual" style="width: 46%; float: left; margin: 0 0 0 10px; background-color: #000; color: silver;" readonly="">listing</textarea><!-- 29% , margin: -10.9em 10.6em;
 						pole kodu hex 
-						--><textarea name="hexfield" class="formField" rows="4" cols="27" wrap="virtual" style="width: 46%; float: right; margin: 0 10px 0 0; background-color: #000; color: gray;" readonly="">hex</textarea><!-- margin: -10.9em 0.9em; -->
+						--><textarea name="hexfield" class="formField" rows="3" cols="27" wrap="virtual" style="width: 46%; float: right; margin: 0 10px 0 0; background-color: #000; color: gray;" readonly="">hex</textarea><!-- margin: -10.9em 0.9em; --> <!-- rows=4 -->
 						
 						<!--</form>-->
-					</table>
-					<br style="clear: both;">
-					<input type="button" value="ASEMBLACJA" onclick="assemble();" style="float: right; margin: 0 5px; width:90px;">
-					<!-- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . -->
+					</tbody></table> 
+					
+					<!-- margin :  , za 'plik' , nad 'plik' , za całością ('Wybierz...') px -->
+					<!-- onchange="emulator.loadFile(); return false;" --> 
+					
+					<br style="clear: both;"> <!-- było --> <!-- NIC button-color: --> <!-- NIC button="color: yellow" -->
+					<!-- <div style="margin-top: 10px;"> -->
+						<!-- było float: right; margin: 0 5px; padding-top: 10px-->
+						<!--
+						<input type="button" value="ASEMBLACJA" onclick="assemble();" style=" margin: 11px 0 0 13px; width:90px; " title="generate code"> -->
+						
+						<!--<span class="display2" style="white-space: nowrap; margin-left: 10px;color: #000 ;" title="from file">z pliku</span>-->
+						<!-- - - - - - - #253850 | title="Wczytaj z dysku..." | ; width:105px; - - - - - - -->
+						<!--
+						<input type="file" id="fileLoader" onchange="loadFile(); return false;" title="Load from disk..." style="color: #0; background-color: #333; margin: 11px 0 0 13px; vertical-align: middle; width: 80px; "> --><!-- name="userFile" | value="" | float:left | ;width:81.5%; | height: 19px; -->
+						<!-- NIC placeholder="none" , name --> <!-- top, right, bottom, left -->
+						<!--
+					<div style="margin: 10px"> -->
+						<table style="border: 1px solid navy;margin: 7px 0 0 12px;" align="left"><!-- style="margin: 10px" --> <tbody> <tr> <th > <label onclick="assemble();" style="margin: 0 0 0 5px; color:lightgreen ;" title="generate code"> ASSEMBLE&nbsp</label></th></tr><!-- value="ASSEMBLE" | margin: 11px 6px -5px 14px; ; padding-top: 300px; color-border: ;border-color | border=1 --></tbody></table><!-- text-align=center --><!-- border=1 bordercolordark=navy bordercolorlight=lightblue -->
+						
+						<!-- . . . . . . . . . . . . . . color : font . . . . . . . . . . . . . . . . . . . . . -->
+						<input type="button" value="RESET" onclick="restart();" style=" width:90px; float: right; margin: 11px 6px;" > <!-- name="restart" | id="restart" | class="reset" | onclick="restart();" | margin: -18px 6px -->
+					<!-- </div>  -->
 				</div>			
 			</div>
 			
 			<div id="right">
-				<h3><font style="vertical-align: inherit;">4004 CPU:</font></h3>
+				<h3>4004 CPU:</h3>
 				<div id="cpu" class="box">
 					<div class="leftDiv">
 						<table id="pc">
-							<tbody><tr><th style="width: 80px;"></th><td colspan="3"><span>STOS</span></td></tr>
+							<tbody><tr><th style="width: 80px;"></th><td colspan="3" title="STACK"><span>STOS</span></td></tr>
 							<tr><th class="left"><span title="PC">LP</span></th><td>0</td><td>0</td><td>0</td></tr>
-							<tr><th class="left">POZIOM 1</th><td>0</td><td>0</td><td>0</td></tr>
+							<tr><th class="left" title="LEVEL">POZIOM 1</th><td>0</td><td>0</td><td>0</td></tr>
 							<tr><th class="left">POZIOM 2</th><td>0</td><td>0</td><td>0</td></tr>
 							<tr><th class="left">POZIOM 3</th><td>0</td><td>0</td><td>0</td></tr>
 						</tbody></table>
 					
 						<table id="registers">
-							<tbody><tr><td colspan="8"><span>REJESTRY</span></td></tr>
+							<tbody><tr><td colspan="8"><span title="REGISTERS">REJESTRY</span></td></tr>
 							<tr><th>R0</th><th>R1</th><td>0</td><td>0</td>   <th>R8</th><th>R9</th><td>0</td><td>0</td></tr>
 							<tr><th>R2</th><th>R3</th><td>0</td><td>0</td>   <th>RA</th><th>RB</th><td>0</td><td>0</td></tr>
 							<tr><th>R4</th><th>R5</th><td>0</td><td>0</td>   <th>RC</th><th>R<!-- &amp; -->D</th><td>0</td><td>0</td></tr>
@@ -165,27 +189,27 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 						</tbody></table>
 
 						<div>
-							<span id="accu"><b>AKUMULATOR:</b> <span>0 [0000]</span></span>
-							<span id="carry"><b><span title=przeniesienie>PRZENIES.</span>:</b> <input type="checkbox" disabled="disabled"></span>
+							<span id="accu" title="ACCUMULATOR"><b>AKUMULATOR:</b> <span>0 [0000]</span></span>
+							<span id="carry" title="przeniesienie"><b>PRZENIES.:</b> <input type="checkbox" disabled="disabled"></span>
 							<span id="test"><b>TEST:</b> <input type="checkbox" disabled="disabled"></span>
 							<br><br>
 							<span id="dassem"> <span>000 00   </span> <span>NOP</span> </span>
-							<span id="cycles"><b>CYKLE:</b> 0</span>
+							<span id="cycles" title="CYCLES"><b>CYCLES:</b> 0</span> <!-- cykle 4004gui_pl.js -->
 						</div>
-					</div>
+					</div>	<!--	leftDiv	-->
 					<div class="rightDiv">
-						<input type="button" value="KROK" id="step"><br>
+						<input type="button" value="KROK" id="step" title="STEP"><br>
 						<input type="button" value="ANIMOWAĆ" id="animate" title=animowane><br>
-						<input type="button" value="URUCHOMIENIE" id="run"><br>
+						<input type="button" value="URUCHOMIENIE" id="run" title="RUN"><br>
 						<input type="button" value="STOP" id="stop"><br>
 						<input type="button" value="RESET" id="resetCPU">
-					</div>
+					</div>	<!--	box	-->
 				</div>
 			
-				<h3>KONFIGURACJA:</h3>
+				<h3 title="CONFIGURATION">KONFIGURACJA:</h3>
 				<div id="conf" class="box">
 					<div class="leftDiv">
-						<input type="radio" id="hardware_0" name="hardware" checked="true"> Ogólna<br>
+						<input type="radio" id="hardware_0" name="hardware" checked="true" title="General"> Ogólna<br>
 						<input type="radio" id="hardware_1" name="hardware" onchange="testFlag = this.checked;"> Sprzęt Intel 4001-0009 ( <a href="http://e4004.szyc.org/emu/varia/MCS-4_Evaluation_Kit_4001_0009.pdf">link</a> )<br>
 						<input type="radio" id="hardware_2" name="hardware" onchange="mcsFlag = this.checked;"> Sprzęt MCS-4/40 (<span title='nie zaimplementowane'>link</span>)
 					</div>
@@ -197,7 +221,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 					</div>
 				</div>
 					
-				<h3><font style="vertical-align: inherit;">Blok ROM:</font></h3>
+				<h3 title="ROM block">Blok ROM:</h3>
 				<div id="rom" class="box">
 					<div class="leftDiv">
 						<table><!--<form style="width: 700px; text-align: left;" name="ase" onsubmit="return false">-->
@@ -207,18 +231,50 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 						<div style="margin-top: 10px;">
 							<input type="checkbox" id="dasm"> <b>Kod <span title=montażowy><font color=lightgreen>assembling</font></span></b>
 							<input type="checkbox" id="ascii"> <b>ASCII</b>
+							<br style="clear: both;">
+							
+							<!-- było plik | ; float: right ; margin-left: 12px; NIC width=20%-->
+							<!--
+							<span class="display2" style="white-space: nowrap; margin-left: 0px;color: #000 ;" title="from file">z pliku</span> -->
+							<!-- - - - - - - #253850 | title="Wczytaj z dysku..." | ; width:105px; - - - - - - -->
+							<!--
+							<input type="file" id="fileLoader" onchange="loadFile(); return false;" title="Load from disk..." style="color: #0; background-color: #333; margin: 0 0 10 5px; vertical-align: middle; width:80%"> --> <!-- name="userFile" | value="" | float:left | ;width:280px |  -->
+							<!-- NIC placeholder="none" , name -->
 						</div>
+						<!--
+						<span class="display2" style="white-space: nowrap; margin-left: 0px;color: #000 ;" title="from file">z pliku</span> -->
+						<!-- - - - - - - #253850 | title="Wczytaj z dysku..." | ; width:105px; - - - - - - -->
+						<!--
+						<input type="file" id="fileLoader" onchange="loadFile(); return false;" title="Load from disk..." style="color: #0; background-color: #333; margin: 0 0 10 5px; vertical-align: middle; width:80%"> --> <!-- name="userFile" | value="" | float:left | ;width:280px |  -->
+						<!-- NIC placeholder="none" , name -->
+						
 					</div>
+					<!--
+					<span class="display2" style="white-space: nowrap; margin-left: 0px;color: #000 ;" title="from file">z pliku</span> -->
+					<!-- - - - - - - #253850 | title="Wczytaj z dysku..." | ; width:105px; - - - - - - -->
+					<!--
+					<input type="file" id="fileLoader" onchange="loadFile(); return false;" title="Load from disk..." style="color: #0; background-color: #333; margin: 0 0 10 5px; vertical-align: middle; width:80%"> --> <!-- name="userFile" | value="" | float:left | ;width:280px |  -->
+					<!-- NIC placeholder="none" , name -->
 					
 					<div class="rightDiv">
-						<input type="button" value="ZAŁADUJ" id="load"><br>
+						<input type="button" value="ZAŁADUJ" id="load" title="LOAD"><br>
 						<input type="button" value="RESET" id="resetROM"><br><br><br>
-						<input type="button" value="P1" id="p1"><br>
-						<input type="button" value="P2" id="p2"><br>
-						<input type="button" value="P3" id="p3" title='nie zaimplementowane'>
+						<input type="button" value="P1" id="p1" ><br> <!-- style="margin: -5px 0" -->
+						<input type="button" value="P2" id="p2" ><br> <!-- style="margin: 28px 0" -->
+						<input type="button" value="P3" id="p3" title='nie zaimplementowane' > <!-- style="margin: -5px 0" -->
 					</div>
+					
+					<br style="clear: both;">
+					<!--<span class="display2" style="white-space: nowrap; margin-left: 10px;color: #000 ;" title="from file">z pliku</span>-->
+					<!-- - - - - - - #253850 | title="Wczytaj z dysku..." | ; width:105px; - - - - - - -->
+					<!--
+					<input type="file" id="fileLoader" onchange="loadFile(); return false;" title="Load from disk..." style="color: #0; background-color: #333; margin: 0 0 5px 12px; vertical-align: middle; width: 80px;"> --> <!-- name="userFile" | value="" | float:left | ;width:81.5%; | height: 26px; -->
+					<!-- NIC placeholder="none" , name --> <!-- top, right, bottom, left -->
+					<!--
+					<input type="button" value="ASSEMBLE" onclick="assemble();" style=" float: right ; margin: -8px 30px 0 0px;  ; width:100px; height: 26px;" title="generate code"> --> <!-- ASEMBLACJA | margin: 0 0 5px 12px; width:90px; padding-right: 5px -->
+					
 				</div>			
-			</div>
+			</div>	<!--	right	-->
 			<br style="clear: both;">
 		</div>
 		<div id="description">
@@ -232,7 +288,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 				<li>Kod obiektu może być używany z <a href="../asm.html">asemblera as4004</a> .</li>
 				<li>Różnorodna konfiguracja sprzętu</li>
 				<li>Dostępny jest pojedynczy tryb „krok”, „<span title=animować>animacja</span>” i „uruchamianie”</li>
-				<li>Możliwość deasemblacji kodu</li>
+				<li>Możliwość demontażu <small>~'deasemblacji'~</small> kodu</li>
 				<li>Dostępny jest system punktów przerwania</li>
 				<li>Możliwość zmiany danych wszystkich rejestrów i flag.</li>
 				<li>Emulator jest całkowicie darmowy.</li>
@@ -243,7 +299,7 @@ a[target="_blank"][href^="http://tab"],.trc_related_container div[data-item-synd
 				<li>Wprowadź kod obiektów do panelu „<span title='Blok ROM'>ROM block</span>”.</li>
 				<li>Kliknij przycisk „ZAŁADUJ”.</li>
 				<li>W „bloku ROM” można zobaczyć zrzut pamięci ROM.</li>
-				<li>Można również wyświetlić kod deasemblacji.</li>
+				<li>Można również wyświetlić kod demontażu.</li>
 				<li>Kliknij przycisk „<span title=ANIMOWAĆ>ANIMATE</span>” w panelu „4004 CPU”.</li>
 				<li>Program będzie działał krok po kroku.</li>
 			</ul>
@@ -299,7 +355,7 @@ DONE
 			</h3>
 			<br>
 			<p>Zestaw ten zapewnia zarówno wygodny sposób oceny części MCS-4, jak i pojazd edukacyjny, aby lepiej zrozumieć działanie MCS-4. <a href="varia/MCS-4_Evaluation_Kit_4001_0009.pdf">4001-0009</a> 
-			mikroprogramowanych że skorzysta z 4004 i 4002  i wykonuje wszystkie 45 instrukcje w  <!--<a href="iset.html">--><a href="../iset.html"> zestawie  instrukcji MCS-4 .</a></p>
+			mikroprogramowanych że skorzysta z 4004 i 4002 i wykonuje wszystkie 45 instrukcje w <!--<a href="iset.html">--><a href="../iset.html"> zestawie instrukcji MCS-4 .</a></p>
 
 			<br><br><br>
 			<b>Przycisk „P3”</b> - jeszcze nie wdrożony
