@@ -3,6 +3,9 @@
 
 // Disassemble functions
 
+//dodana linia zmiany struktury
+//var gui_pl = (function() {
+
 var hextab= ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 
 var opctab= [
@@ -67,6 +70,7 @@ if(!Array.indexOf){
 		return -1;
 	}
 }
+	
 // kroki
 function DisAsmStep(pc) {
 	var addr, ops1, ops2, disas, instr;
@@ -95,9 +99,9 @@ function getHexAddr(data) {
 var endAddr=0;
 var disArray = [];
 
-function load(data,address){
+function load(data,address) {
 	//*=$0068
-	//if (endAddr!=0) {alert("Press RESET before loading"); return;}
+	// if (endAddr!=0) {alert("Press RESET before loading"); return;}
 	if (endAddr!=0) {alert("Naciśnij RESET przed załadunkiem"); return;}
 	var i,j=false, newAddress;
 	address = address || 0;
@@ -125,7 +129,7 @@ function load(data,address){
 	show();
 }
 // tablica disasmeblowana
-function generateDisArray(){
+function generateDisArray() {
 	disArray = [];
 	var addr, i, dasm;
 	i=addr=0;
@@ -139,8 +143,9 @@ function generateDisArray(){
 	disasm[0].innerHTML = dasm[0] +' '+ dasm[1];
 	disasm[1].innerHTML = dasm[2];
 }
+
 // tablica punktow zatrzymania
-function generateBPArray(){
+function generateBPArray() {
 	breakpoints = [];
 	var bps, i, dasm;
 	bps=0;
@@ -160,7 +165,7 @@ function newElement(nameEl,parentEl, options){
 	return element;
 }
 									
-function newWindow(obj,title,css){
+function newWindow(obj,title,css) {
 		var el1,el2,style;
 		var sFloat = document.all ? 'styleFloat' : 'cssFloat'; //float
 
@@ -185,7 +190,7 @@ function newWindow(obj,title,css){
 		}
 	}
 
-	function dragDrop(E,evt){
+	function dragDrop(E,evt) {
 		var x,y, minX;
 		var e=(evt)?evt:window.event;
 		if (window.event) {
@@ -212,6 +217,7 @@ function newWindow(obj,title,css){
 			return false;
 		}
 	}
+
 // wyswietlanie danych - blok ROM
 function show(){
 	var ascii = '';
@@ -259,22 +265,22 @@ function show(){
 }
 
 // klik zmiany wartosci - tryb pobrania 
-function getValue(mode){
+function getValue(mode) {
 	var val;
 	if(mode){
 		do{
 			//if(val) alert("Please write correct value")
 			if(val) alert("Proszę napisać poprawną wartość")
-			//val = prompt('Please write number[0-F]:','');
+			// val = prompt('Please write number[0-F]:','');
 			val = prompt('Proszę wpisać numer[0-F]:','');
 			if(!val) return null;
 		}while( !( (val[0] >= '0' && val[0] <= '9') || (val[0].toUpperCase() >= 'A' && val[0].toUpperCase() <= 'F')) );
 		return val[0];	
 	}	else {
 		do{
-			//if(val) alert("Please write corect value")
+			// if(val) alert("Please write corect value")
 			if(val) alert("Proszę napisać poprawną wartość")
-			//val = prompt('Please write number[000-FFF]:','');
+			// val = prompt('Please write number[000-FFF]:','');
 			val = prompt('Proszę wpisać numer[000-FFF]:','');
 			if(!val) return null;
 			j = parseInt( val[0]+val[1]+val[2] ,16);
@@ -283,21 +289,22 @@ function getValue(mode){
 	}
 }
 
-function nextElement(el){
+function nextElement(el) {
 	while(el){
 		el=el.nextSibling;
 		if (el.nodeType==1)
 			return el;
 	}
 }
+
 // określenie RAM
 function getRam(what){ return(what == 0) ? parseInt(select00.value*4)+parseInt(select01.value) : parseInt(select10.value*4)+parseInt(select11.value); }
 
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 // reset bez id=_resetRam
 
-function _resetRam(what){
-//function resetRam(what){
+function _resetRam(what) {
+// function resetRam(what){
 	ramdata[ getRam(what) ] = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];	// komorki pamieci RAM rejestrow 0-3
 	ramstatus[ getRam(what) ] = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]] ;	// status
 	ramout[ getRam(what) ] = 0;	// output
@@ -322,10 +329,10 @@ function resetRam0(what){
 // */
 
 // zmiany w CPU
-function _pc(isChange, j){
+function _pc(isChange, j) {
 	var els, val, change;
 	
-	change = function(i,els){
+	change = function(i,els) {
 		els[1+i*3].innerHTML = (PC_stack[i] & 0xf00).toString(16)[0].toUpperCase();
 		els[2+i*3].innerHTML = (PC_stack[i] & 0xf0).toString(16)[0].toUpperCase();
 		els[3+i*3].innerHTML = (PC_stack[i] & 0xf).toString(16)[0].toUpperCase();
@@ -345,7 +352,7 @@ function _pc(isChange, j){
 			change(j,els);
 }
 
-function _registers(isChange, i,j){
+function _registers(isChange, i,j) {
 	var els, val, i;
 	
 	isChange = isChange || false;
@@ -370,15 +377,16 @@ function _registers(isChange, i,j){
 		els[i+1].innerHTML = val[0].toUpperCase();	
 	} else {
 		j=0;
-		for(i=1; els[i]; i+=2){
+		for(i=1; els[i]; i+=2) {
 			els[i++].innerHTML = R_regs[j++].toString(16).toUpperCase();
 			els[i++].innerHTML = R_regs[j++].toString(16).toUpperCase();
 			if(i==15) i=1;
 		}		
 	}	
 }
+
 // akumulator
-function _accu(isChange){
+function _accu(isChange) {
 	var val;
 	
 	if(isChange){
@@ -394,8 +402,9 @@ function _accu(isChange){
 	el.innerHTML +=	(A_reg & 0x2).toString(2)[0]
 	el.innerHTML +=	(A_reg & 0x1).toString(2)[0]+']';
 }
+	
 // przeniesienie
-function _carry(isChange){
+function _carry(isChange) {
 	if(isChange)
 		C_flag = ~~!C_flag;
 	carryElement.checked = (C_flag ? true : false ); 
@@ -406,10 +415,12 @@ function _test(isChange){
 		T_flag = ~~!T_flag;
 	testElement.checked = (T_flag ? true : false ); 
 }
+	
 // cykle
 function _cycles(){ cyclesElement.innerHTML = '<b>CYKLE:</b> '+(''+cpuCycles).toUpperCase(); }
+	
 // wyswietlenie w CPU kolejnej linii instrukcji
-function _disAsm(){
+function _disAsm() {
 	var j = DisAsmStep( PC_stack[0] );
 	disasm[0].innerHTML = j[0] +' '+ j[1]+' '+j[2];
 	disasm[1].innerHTML = j[3];
@@ -424,8 +435,9 @@ function _port(isChange){
 	el[2].checked = (romport & 0x2).toString(2)[0] == 1 ? true : false;
 	el[3].checked = (romport & 0x1).toString(2)[0] == 1 ? true : false;	
 }
+	
 // zmiana pamięci
-function _memory(isChange,what,td,k){
+function _memory(isChange,what,td,k) {
 	var tds,j,k,td;
 	tds = (what == 0) ? memory0Elements : memory1Elements;
 	if(isChange){
@@ -448,8 +460,9 @@ function _memory(isChange,what,td,k){
 		}
 	}
 }
+	
 // zmiana w statusie RAM
-function _status(isChange,what,td,k){
+function _status(isChange,what,td,k) {
 	var tds,j,k,td;
 	tds = (what == 0) ? status0Elements : status1Elements;
 	if(isChange){
@@ -471,8 +484,9 @@ function _status(isChange,what,td,k){
 		}
 	}
 }
+	
 // wskaźniki wyjścia Q0-3
-function _outputs(isChange,what){
+function _outputs(isChange,what) {
 	var el = (what == 0) ? outputs0Elements : outputs1Elements;
 	
 	el[0].checked = (ramout[ getRam(what) ] & 0x8).toString(2)[0] == 1 ? true : false;
@@ -482,7 +496,7 @@ function _outputs(isChange,what){
 }
 
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-function setRam( what ){
+function setRam( what ) {
 	var tds, td, i; 
 	
 	_memory(false, what);
@@ -510,7 +524,7 @@ function setRam( what ){
 //dodane
 //document.getElementsByName('reset')[what].onclick = function(){ resetRam( what ) };
 
-function refresh(what, h){
+function refresh(what, h) {
 	switch(what){
 		case 'pc': _pc(false); break;
 		case 'registers': _registers(false); break;
@@ -528,7 +542,7 @@ function refresh(what, h){
 	}
 }
 
-function setPc(){
+function setPc() {
 	var tds, td, i, j;
 	
 	_pc(false);
@@ -559,7 +573,7 @@ function setPc(){
 	document.getElementById('test').getElementsByTagName('b')[0].onclick = function(){ _test(true); };
 }
 
-function changeAll(){
+function changeAll() {
 	_memory(false, 0);
 	_status(false, 0);
 	_outputs(false, 0);
@@ -578,8 +592,9 @@ function changeAll(){
 	
 	_port(false);
 }
+	
 // przy odświeżeniu strony
-window.onload = function(){
+window.onload = function() {
 	pcElements = document.getElementById('pc').getElementsByTagName('td');
 	registersElements = document.getElementById('registers').getElementsByTagName('td');
 	accuElement = document.getElementById('accu').getElementsByTagName('span')[0];
@@ -617,10 +632,10 @@ window.onload = function(){
 		_disAsm();
 	}
 	// ROM
-	document.getElementById('load').onclick = function(){ load(document.getElementById('data').value,0); };
+	document.getElementById('load').onclick = function() { load(document.getElementById('data').value,0); };
 
 	// blok ROM - reset
-	document.getElementById('resetROM').onclick = function(){
+	document.getElementById('resetROM').onclick = function() {
 		document.getElementById('break').innerHTML = '';
 		clearROM(); disArray=[]; endAddr=0;
 		document.getElementById('data').value = '';	// data - pole dycyjne (textarea) w bloku ROM
@@ -630,7 +645,7 @@ window.onload = function(){
 	document.getElementById('dasm').onchange = show;
 	
 	
-	document.getElementById('p1').onclick = function(){
+	document.getElementById('p1').onclick = function() {
 		clearROM();
 		document.getElementById('break').innerHTML = '';
 		disArray=[]; endAddr=0;
@@ -640,7 +655,7 @@ window.onload = function(){
 		show();
 	}
 
-	document.getElementById('p2').onclick = function(){
+	document.getElementById('p2').onclick = function() {
 		clearROM();
 		document.getElementById('break').innerHTML = '';
 		disArray=[]; endAddr=0;
@@ -652,13 +667,13 @@ window.onload = function(){
 
 	// 'p3' - dodane
 	// /*
-	document.getElementById('p3').onclick = function(){
+	document.getElementById('p3').onclick = function() {
 		//what=0;
 		//resetRam0(what);
 		clearROM();
 		document.getElementById('break').innerHTML = '';
 		disArray=[]; endAddr=0;
-		with(document.getElementById('dasm')){ checked = true; }
+		with(document.getElementById('dasm')){ checked = true; }	//;
 		with(document.getElementById('hardware_2')){ checked = true; }
 		load('00',0);
 		testFlag=false;
@@ -668,7 +683,7 @@ window.onload = function(){
 	
 	// . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 	// reset całkowity 	id=ra
-	document.getElementById('ra').onclick = function(){ 
+	document.getElementById('ra').onclick = function() { 
 		reset();
 		disArray=[]; endAddr=0;
 		document.getElementById('data').value = '';			//data - blok ROM
@@ -694,7 +709,9 @@ window.onload = function(){
 		resetRam0(what);
 	}
 	*/
+	// /*
 	document.getElementById('resetRam1').onclick = function(){ 
+	//document.getElementByName('reset').onclick = function(){ 
 		//clearRAM();
 		jakie=0;
 		//what = document.getElementsByName('reset')[what].onclick ; 	// document. ;
@@ -710,15 +727,15 @@ window.onload = function(){
 		// /*
 		_memory(0, jakie);
 		_status(false, jakie);
-		_outputs(true, jakie);
+		_outputs(0, jakie);	// true
 		
 		//refresh();
 		if ((select00.value==select10.value) && (select01.value==select11.value)) {
 		//alert('te same pamieci'); 
 		
-		_memory(0, jakie+1);
-		_status(false, jakie+1);
-		_outputs(0, jakie+1); // true
+			_memory(0, jakie+1);
+			_status(false, jakie+1);
+			_outputs(0, jakie+1); // true
 		} /*
 		else {
 		alert('rozne pamieci'+select01.value +select11.value);
@@ -727,8 +744,9 @@ window.onload = function(){
 		//_memory(false, getRam(what) );
 		//_status(false, getRam(what) );
 		//_outputs(false, getRam(what) );
-		
+	// /*	
 	}
+	//*/
 	/*
 	//document.getElementsByName('reset')[what].onclick = function(){ _resetRam( what ) };
 	*/
@@ -816,7 +834,214 @@ window.onload = function(){
 	setRam(0);	// RAM 	1
 	setRam(1);	// 		2
 	setPc();	// opcje CPU
+	
+	//dodane
+	/*
+	document.getElementById('restart').onclick = function() {
+		document.getElementById('mem').value = '';
+	*/
 }
 
+
+// dodane na koniec poza oryginalne
+
+function restart() {
+	
+	var srcPole=document.forms.ass.srcfield;
+	if (confirm('SURE - na pewno ?')) srcPole.value=' \n';	// ' 8\n'
+	
+}
+
+// /*
+function loadFile(file) {
+	
+	// definicja funlcji lokalnej
+	function showUploaderMessage() {
+	
+		showInfoDialog('Plik Załadowany', 'Transfer kompletny. Do asemblacji tego kodu do pamięci, kliknij przycisk &quot;ASEMBLACJA&quot;.');
+		//showInfoDialog('test',msg);	//nic
+	}
+		
+	//deklaracja zmiennej lokalnej	
+	var fromUploader=false;
+	
+	// dodany napis testowy
+	//alert('test');
+	
+	// instrukcje
+	if (!file) 
+		{
+	
+		file=document.getElementById('fileLoader').files[0];
+		fromUploader=true;
+		}
+	
+	//dodane
+	/*
+	var srcfield=document.forms.ass.srcfield;
+	srcfield.value=' \n';
+	getSrc(file);
+	*/
+	
+	//dodany napis testowy - nic i blokowanie
+	//if (file) { showInfoDialog('test', 'test');	}
+	//alert('nic')	// jest 
+	// /*
+	if (file) 
+		{
+		
+		var dropTarget = document.getElementById('mem'),
+			isBin=(/\.(bin|obj|o)$/i).test(file.name),
+			isHex=(/\.(hex|du?mp|te?xt)$/i).test(file.name),
+			isTxt=(/^text\//i).test(file.type),
+			// ^ .asm nie czyta
+			reader = new FileReader();	// typ 
+		if (isHex || (!isBin && isTxt)) 
+			{
+			// txt
+			reader.onload = function fileReader_onTxtLoad(readerEvent) {
+				var text;
+				
+				// bez //
+				dropTarget.value = text = readerEvent.target.result || '';
+				if (fromUploader && text) showUploaderMessage();
+			};
+			
+			reader.readAsText(file);
+			
+			//dodane 3
+			var fileLoader = document.getElementById('fileLoader');
+			//fileLoader.value[2] = fileLoader.value.match(/([^\/\\]*)$/)[1];	// :
+			//alert(fileLoader.value.lastIndexOf("\"));	//
+			//alert(fileLoader.value[9]);
+			fileLoader.value = "test";
+			alert(fileLoader.value[1]);
+			}
+		
+		else 
+			{
+			// kod
+			reader.onload = function fileReader_onBinLoad(readerEvent) {
+			
+				var data = new DataView(readerEvent.target.result),
+					size = readerEvent.target.result.byteLength,
+					text = '';
+				for (var i=0; i<size; i++) 
+					{
+				
+					var b = data.getUint8(i);
+					if (i>0) text+= i%8? ' ':'\n';
+					text += b < 16? '0'+b.toString(16):b.toString(16);
+					}
+				
+				// wykomentowana linia ?
+				//dropTarget.value = text.toUpperCase();
+				if (fromUploader && text) showUploaderMessage();
+			}
+			
+			reader.readAsArrayBuffer(file);
+			}
+		
+		}
+		
+	//dodane
+	// /*
+	function splitPath(path) {
+		var a, b = path.match(/([^\/\\]*)$/)[1];
+		a = path.substr(0,path.length - b.length - 1);
+		return [a, b];
+	}
+	function test0() {
+		var oF = document.getElementById('fileLoader'); // 'orderForm'	// 'ass'	// 'fileLoader'
+		var uF = splitPath(oF.elements['fileLoader'].value)[1]; // 'userFile'	// (name) lub (id)
+		alert(uF);	// nic
+	}
+	// */
+	//alert('nic');	// jest
+	//test0();	// nic
+	//document.getElementById('fileLoader').value = "test" ;	// nic, blokuje
+	//fileLoader.name = fileLoader.value.match(/([^\/\\]*)$/)[1];	// nic , blokowane
+	//alert(fileLoader.name);
+	// /*
+	try 
+		{
+		var fileLoader = document.getElementById('fileLoader');
+		//fileLoader.value='';	// zakomentowane
+		// dodane
+		//fileLoader.value = fileLoader.value.lastIndexOf("\");	// nic
+		//fileLoader.value = file.match(/([^\/\\]*)$/) // nic	// .test(file.name)
+		//fileLoader.value = (/([^\/\\]*)$/).test(file.name)	// nic
+		//test0(); // nic
+		//alert('nazwa');	//jest
+		//var sciezka = document.getElementById('fileLoader').value;	
+		//var sciezka = fileLoader.value
+		//sciezka = sciezka.lastIndexOf("\");	// nic
+		//var nazwa = sciezka.match(/([^\/\\]*)$/)[1];
+		//sciezka = sciezka.substr(0,path.length - sciezka.length -1);
+		//var nazwa = fileLoader.value.match(/([^\/\\]*)$/)[1];
+		//var sciezka='nazwa';
+		//alert(sciezka);
+		
+		//document.getElementById('fileLoader').value = sciezka;
+		//fileLoader.value = nazwa ;
+		//fileLoader.value = fileLoader.value(sciezka.match(/([^\/\\]*)$/)[1]); // blokuje
+		//alert('test');	//jest
+		//fileLoader = splitPath(oF.elements['fileLoader'].value)[1];
+		//fileLoader.name = fileLoader.value.match(/([^\/\\]*)$/)[1];
+		//alert('test');	//nic
+		//alert(fileLoader.name);	//jest
+		
+		if (!(/safari/i).test(navigator.userAgent)) 
+			{
+		
+			//fileLoader.type = '';	// zakomentowane(?)
+			fileLoader.type = 'file';
+			
+			}
+		
+		}
+	
+	//dodane
+	//document.getElementById('fileLoader').value = 'test' ;	//blokowanie
+	
+	catch(e) {}
+	
+	//dodane
+	//document.getElementById('fileLoader').value = 'test' ;	//nic
+}
+// */
+
+/*
+function loadFile(file) {
+	if (!file) file=document.getElementById('fileLoader').files[0];
+	if (file) {
+		var dropTarget = document.getElementById('srcfield'),
+			isAsm = (/\.(te?xt|asm?|as?[0-9]+|disass?|dis)$/i).test(file.name),
+			isTxt=(/^text\//i).test(file.type);
+		if (isAsm || isTxt) {
+			var reader = new FileReader();
+			reader.onload = function fileReader_onTxtLoad(readerEvent) {
+				dropTarget.value = readerEvent.target.result || '';
+			};
+			reader.readAsText(file);
+		}
+		else {
+			dropTarget.value = commentChar+'not a valid source file.';
+		}
+	}
+	try {
+		var fileLoader = document.getElementById('fileLoader');
+		fileLoader.value='';
+		if (!(/safari/i).test(navigator.userAgent)) {
+			fileLoader.type = '';
+			fileLoader.type = 'file';
+		}
+	}
+	catch(e) {}
+}
+*/
+
+// początek wykomentowany
+// })();
 
 // eof
