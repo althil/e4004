@@ -177,13 +177,13 @@ function assemble() {
 	// hexfield.value=' \n';
 	hexfield.value=' \n';
 	//listing_code='starting assembly\npass 1\n';
-	listing_code='starting assembly\npodanie 1\n';
+	listing_code='starting assembly\nprzebieg 1\n';
 	var pass1=false;
 	var pass2=false;
 	code=[];
 	pass1=doPass(1);
 	if (pass1) {
-		listing_code='podanie 1: zrobione\npodanie 2\n'
+		listing_code='przebieg 1: zrobione\nprzebieg 2\n'
 		pass2=doPass(2);
 		if (pass2) {
 			var c='', hcode='', haddr=0x0000;
