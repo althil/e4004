@@ -1,4 +1,4 @@
-﻿/*
+/*
    Intel 4004 microprocessor JavaScript assembler
    by Maciej Szyc 2006, e4004'at'szyc.org
    ISO-8859-2 lub ANSI(ISO-8859-15 ucina ogony w polskich literach)
@@ -360,12 +360,12 @@ function doPass(pass) {
 				var a=getNumber(sym[2]);
 				if (a=='NaN') {
 					//displayError('syntax error:\nnumber expected');
-					displayError('syntax error:\nnumber expected');
+					displayError('błąd składni:\nnumber expected');
 					return false
 				}
 				else if (sym.length>3) {
 					//displayError('syntax error:\ntoo many arguments');
-					displayError('syntax error:\ntoo many arguments');
+					displayError('błąd składni:\ntoo many arguments');
 					return false
 				};
 				listing_code+='$'+getHexWord(a);
@@ -373,7 +373,7 @@ function doPass(pass) {
 			}
 			else {
 				//displayError('syntax error:\nassignment expected');
-				displayError('syntax error:\nassignment expected');
+				displayError('błąd składni:\nassignment expected');
 				return false
 			};
 			if (pass==2) {code[code.length]=-1; code[code.length]=(pc&0xFF00)/256; code[code.length]=pc&0xFF;}
@@ -399,7 +399,7 @@ function doPass(pass) {
 			}
 			else if (pragma!='.BYTE') {
 				//displayError('syntax error:\ninvalid pragma');
-				displayError('syntax error:\ninvalid pragma');
+				displayError('błąd składni:\ninvalid pragma');
 				return false
 			};
 			if (sym.length==2) {
@@ -415,7 +415,7 @@ function doPass(pass) {
 							v=getNumber(v);
 							if (v=='NaN') {
 								//displayError('syntax error:\ninvalid value');
-								displayError('syntax error:\ninvalid value');
+								displayError('błąd składni:\ninvalid value');
 								return false
 							}
 						}
@@ -424,7 +424,7 @@ function doPass(pass) {
 							v=getIdentifier(v);
 							if (v=='') {
 								//displayError('syntax error:\ninvalid identifier');
-								displayError('syntax error:\ninvalid identifier');
+								displayError('błąd składni:\ninvalid identifier');
 								return false
 							}
 							else if (typeof symtab[v] == 'undefined') {
