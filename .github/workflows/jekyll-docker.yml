@@ -6,4 +6,4 @@ on:
   pull_request:
     branches: [ "sequel" ]
 
-workflow_dispatch:
+  workflow_dispatch:
