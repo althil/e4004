@@ -1,9 +1,0 @@
-name: Jekyll site CI
-
-on:
-  push:
-    branches: [ "sequel" ]
-  pull_request:
-    branches: [ "sequel" ]
-
-  workflow_dispatch:
