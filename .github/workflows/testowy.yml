@@ -1,4 +1,5 @@
-name: Hello World Workflow
+#polskie znaki
+name: Hello Workflow
 
 on:
   workflow_dispatch:
@@ -8,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wyświetl komunikat
-        run: echo "Hello"
+        run: echo "Hęłó"
